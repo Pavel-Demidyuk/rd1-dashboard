@@ -1,0 +1,37 @@
+body {
+  overflow: hidden;
+  /*cursor: none;*/
+  padding: 5px;
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 0%, rgba(102,9,121,0.304359243697479) 39%);
+}
+.control_buttons {
+  position: fixed;
+  top: 5px;
+}
+.big_button {
+  min-height: 60px;
+}
+.services_table {
+  margin-top: 70px;
+}
+#loading {
+  display:none;
+}
+
+.mdl-data-table tbody tr {
+  height:25px;
+}
+.mdl-data-table td {
+  height: 25px;
+  padding: 4px 18px;
+}
+.mdl-progress {
+  width:200px
+}
+.save_device_buttons button{
+  margin: 1px;
+}
+.card {
+  display:none
+}

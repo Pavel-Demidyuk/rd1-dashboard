@@ -1,0 +1,32 @@
+extends layout
+
+block content
+    #main_page
+        .control_buttons
+            button#find.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent.big_button Поиск устройств
+    #loading
+        | поиск устройств...
+        #p1.mdl-progress.mdl-js-progress.mdl-progress__indeterminate
+    .services_table
+        table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp.services_table
+            thead
+                tr
+                    th.mdl-data-table__cell--non-numeric Сервис
+                    th Статус
+            tbody
+                tr
+                    td rd1-app
+                    td ok
+                tr
+                    td homeassistant
+                    td ok
+                tr
+                    td owserver
+                    td ok
+                tr
+                    td nodered
+                    td ok
+                tr
+                    td mqtt
+                    td ok
+
