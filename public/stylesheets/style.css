@@ -12,7 +12,7 @@ body {
   min-height: 60px;
 }
 .services_table {
-  /*margin-top: 70px;*/
+  font-size: 12px;
 }
 #loading {
   display:none;
