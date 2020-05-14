@@ -38,13 +38,12 @@ let getIp = () => {
 
 let getSystemHealthData = () => {
     let parseColorStatus = (state) => {
-        if (state.toLowerCase().includes('healthy')) {
-            return 'green'
-        }
         if (state.toLowerCase().includes('unhealthy') || state.toLowerCase().includes('exit')|| state.toLowerCase().includes('dead')) {
             return 'red'
         }
-
+        if (state.toLowerCase().includes('healthy')) {
+            return 'green'
+        }
         return 'yellow'
     }
 
