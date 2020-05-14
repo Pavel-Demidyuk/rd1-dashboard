@@ -46,7 +46,7 @@ let saveDevicesHandler = () => {
         let index = btn.closest('.card').data('card')
         let service = btn.data('service')
         // let name = $('input[name=name_' + id + ']').val()
-        $.get('/raw/1wire/register/?id=' + id + '&service=' + service + '&name=' + id, result => {
+        $.get('http://127.0.0.1:5051/raw/1wire/register/?id=' + id + '&service=' + service + '&name=' + id, result => {
             console.log(result)
             $('#card_' + id).hide()
             let nextIndex = index + 1

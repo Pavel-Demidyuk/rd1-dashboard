@@ -14,19 +14,7 @@ block content
                     th.mdl-data-table__cell--non-numeric Сервис
                     th Статус
             tbody
-                tr
-                    td rd1-app
-                    td ok
-                tr
-                    td homeassistant
-                    td ok
-                tr
-                    td owserver
-                    td ok
-                tr
-                    td nodered
-                    td ok
-                tr
-                    td mqtt
-                    td ok
-
+                each container in containers
+                    tr
+                        td #{container.name}
+                        td #{container.state}
