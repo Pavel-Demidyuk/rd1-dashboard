@@ -1,8 +1,8 @@
 body {
   overflow: hidden;
   /*cursor: none;*/
-  background: rgb(2,0,36);
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 0%, rgba(102,9,121,0.304359243697479) 39%);
+  background: rgb(17,29,16);
+  background: linear-gradient(0deg, rgba(17,29,16,0.8113620448179272) 14%, rgba(17,48,230,0.34077380952380953) 86%);
 }
 .control_buttons {
   position: fixed;
