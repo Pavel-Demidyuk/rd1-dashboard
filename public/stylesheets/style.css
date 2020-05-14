@@ -1,7 +1,6 @@
 body {
   overflow: hidden;
   /*cursor: none;*/
-  padding: 5px;
   background: rgb(2,0,36);
   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 0%, rgba(102,9,121,0.304359243697479) 39%);
 }
@@ -31,11 +30,44 @@ body {
   padding: 4px 18px;
 }
 .mdl-progress {
-  width:200px
+  width:475px
 }
 .save_device_buttons button{
   margin: 1px;
 }
 .card {
   display:none
+}
+#main_content {
+  padding: 5px;
+}
+#ip {
+  float: left;
+}
+#time {
+  float: right;
+  padding-right:30px;
+}
+#footer {
+  background: rgb(0,0,0);
+  background: linear-gradient(0deg, rgba(0,0,0,1) 2%, rgba(0,0,0,0.34077380952380953) 100%);
+  position: fixed;
+  bottom: 0;
+  height:30px;
+  width: 100%;
+  padding:8px;
+  font-size: 11px;
+  color: #fffde7;
+}
+.state {
+  padding-left:5px
+}
+.green {
+  color:green
+}
+.red {
+  color:red
+}
+.yellow {
+  color: #e6e700
 }

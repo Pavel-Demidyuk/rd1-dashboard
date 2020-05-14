@@ -1,24 +1,27 @@
 extends layout
 
 block content
-    #menu
-        #control_buttons
-                button#find.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent.big_button Поиск устройств
-        #loading
-            | поиск устройств...
-            #p1.mdl-progress.mdl-js-progress.mdl-progress__indeterminate
-    #services_table
-        table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp.services_table
-            thead
-                tr
-                    th.mdl-data-table__cell--non-numeric Сервис
-                    th Статус
-            tbody
-                each container in containers
+    #main_content
+        #menu
+            #control_buttons
+                    button#find.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent.big_button Поиск устройств
+            #loading
+                | поиск устройств...
+                #p1.mdl-progress.mdl-js-progress.mdl-progress__indeterminate
+        #services_table
+            table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp.services_table
+                thead
                     tr
-                        td #{container.name}
-                        td #{container.state}
-    div#ip IP: #{ip}
-    div#time ...
+                        th.mdl-data-table__cell--non-numeric Сервис
+                        th Статус
+                tbody
+                    each container in containers
+                        tr
+                            td #{container.name}
+                            td #{container.state}
+                                span.state(class=container.status) &#9733;
+    #footer
+        #ip IP: #{ip}
+        #time ...
 
     script(src='/javascripts/index.js')

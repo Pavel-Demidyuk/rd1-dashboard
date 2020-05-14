@@ -28,13 +28,13 @@ let updateStatusHandler = () => {
         result = JSON.parse(result)
         $('tbody').html('')
         result.containers.forEach(container => {
-            $('tbody').prepend(`<tr><td>${container.name}</td><td>${container.state}</td></tr>`)
+            $('tbody').prepend(`<tr><td>${container.name}</td><td>${container.state}<span class='state ${container.status}'>&#9733;</span></td></td></tr>`)
         })
     }).fail(function () {
         console.log('error')
     })
 
     updateTime()
-    setTimeout(updateStatusHandler, 60000)
+    setTimeout(updateStatusHandler, 6000)
 }
 

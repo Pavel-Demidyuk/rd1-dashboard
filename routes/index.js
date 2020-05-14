@@ -19,7 +19,7 @@ router.get('/', function (req, res, next) {
 router.get('/status_json', function (req, res, next) {
     getSystemHealthData().then(containers => {
         res.send(JSON.stringify({
-            containers:containers
+            containers: containers
         }));
     })
 });
@@ -36,7 +36,18 @@ let getIp = () => {
     })
 }
 
-let getSystemHealthData =  () => {
+let getSystemHealthData = () => {
+    let parseColorStatus = (state) => {
+        if (state.toLowerCase().includes('healthy')) {
+            return 'green'
+        }
+        if (state.toLowerCase().includes('unhealthy') || state.toLowerCase().includes('exit')|| state.toLowerCase().includes('dead')) {
+            return 'red'
+        }
+
+        return 'yellow'
+    }
+
     return new Promise(resolve => {
         exec('docker container ls -a --format \'{{.Image}}***{{.Status}}\'', (err, stdout, stderr) => {
             let result = []
@@ -50,7 +61,8 @@ let getSystemHealthData =  () => {
                     let [name, state] = status.split("***")
                     result.push({
                         name: name,
-                        state: state
+                        state: state,
+                        status: parseColorStatus(state)
                     })
                 })
 
