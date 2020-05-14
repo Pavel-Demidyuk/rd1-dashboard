@@ -6,14 +6,35 @@ const {exec} = require('child_process'),
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    getSystemHealthData().then(containers => {
-        console.log("!!!", containers)
+    Promise.all([getSystemHealthData(), getIp()]).then(result => {
         res.render('index', {
             title: 'RD1 Dashboard',
-            containers: containers
+            containers: result[0],
+            ip: result[1]
         });
     })
 });
+
+
+router.get('/status_json', function (req, res, next) {
+    getSystemHealthData().then(containers => {
+        res.send(JSON.stringify({
+            containers:containers
+        }));
+    })
+});
+
+let getIp = () => {
+    return new Promise(resolve => {
+        exec('hostname -I', (err, stdout, stderr) => {
+            if (err) {
+                resolve('undefined on mac')
+            } else {
+                resolve(stdout)
+            }
+        });
+    })
+}
 
 let getSystemHealthData =  () => {
     return new Promise(resolve => {
@@ -33,7 +54,9 @@ let getSystemHealthData =  () => {
                     })
                 })
 
-                resolve(result)
+                resolve(result.sort((a, b) => {
+                    return a.name > b.name
+                }))
             }
         });
     })

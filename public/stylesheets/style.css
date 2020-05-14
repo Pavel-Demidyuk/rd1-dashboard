@@ -13,10 +13,14 @@ body {
   min-height: 60px;
 }
 .services_table {
-  margin-top: 70px;
+  /*margin-top: 70px;*/
 }
 #loading {
   display:none;
+}
+
+#menu {
+  height:65px;
 }
 
 .mdl-data-table tbody tr {

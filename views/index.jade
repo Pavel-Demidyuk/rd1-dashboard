@@ -1,13 +1,13 @@
 extends layout
 
 block content
-    #main_page
-        .control_buttons
-            button#find.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent.big_button Поиск устройств
-    #loading
-        | поиск устройств...
-        #p1.mdl-progress.mdl-js-progress.mdl-progress__indeterminate
-    .services_table
+    #menu
+        #control_buttons
+                button#find.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent.big_button Поиск устройств
+        #loading
+            | поиск устройств...
+            #p1.mdl-progress.mdl-js-progress.mdl-progress__indeterminate
+    #services_table
         table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp.services_table
             thead
                 tr
@@ -18,3 +18,7 @@ block content
                     tr
                         td #{container.name}
                         td #{container.state}
+    div#ip IP: #{ip}
+    div#time ...
+
+    script(src='/javascripts/index.js')

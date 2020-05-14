@@ -12,18 +12,35 @@ $(document).ready(() => {
     $("#main_page_button").click(() => {
         window.location.href = "/"
     })
-
     saveDevicesHandler()
-
-    // $("#repeat_find").click(() => {
-    //     startLoading()
-    // })
-    // $("#main_page_button").click(() => {
-    //     $("#loading").hide()
-    //     $("#loading_fail").hide()
-    //     $("#main_page").show()
-    // })
+    udpateTime()
+    setTimeout(updateStatusHandler, 30000)
 })
+
+let updateStatusHandler = () => {
+    console.log("Updating statuses")
+    $.get('status_json', result => {
+        result = JSON.parse(result)
+        $('tbody').html('')
+        result.containers.forEach(container => {
+            $('tbody').prepend(`<tr><td>${container.name}</td><td>${container.state}</td></tr>`)
+        })
+    }).fail(function () {
+        console.log('error')
+    })
+
+    updateTime()
+    setTimeout(updateStatusHandler, 60000)
+}
+
+let udpateTime = () => {
+    $('#time').html('')
+    let date = new Date();
+    $('#time').html(date.getHours() + ':' + date.getMinutes())
+}
+
+
+
 
 let saveDevicesHandler = () => {
     $('[data-card="0"]').show();
