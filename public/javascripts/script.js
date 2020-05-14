@@ -32,7 +32,7 @@ let saveDevicesHandler = () => {
         e.preventDefault();
         let btn = $(e.target)
         let id = btn.data('id')
-        $.get('/raw/3A/toggle/' + id, result => {
+        $.get('http://127.0.0.1:5051/raw/3A/toggle/' + id, result => {
             console.log(result)
         }).fail(function () {
             console.log('error')

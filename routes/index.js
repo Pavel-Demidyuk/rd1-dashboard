@@ -17,7 +17,7 @@ router.get('/', function (req, res, next) {
 
 let getSystemHealthData =  () => {
     return new Promise(resolve => {
-        exec('docker container ls -a --format \'{{.Image}}:{{.Status}}\'', (err, stdout, stderr) => {
+        exec('docker container ls -a --format \'{{.Image}}***{{.Status}}\'', (err, stdout, stderr) => {
             let result = []
             if (err) {
                 console.error(err)
@@ -26,7 +26,7 @@ let getSystemHealthData =  () => {
                     if (status.length === 0) {
                         return
                     }
-                    let [name, state] = status.split(":")
+                    let [name, state] = status.split("***")
                     result.push({
                         name: name,
                         state: state
