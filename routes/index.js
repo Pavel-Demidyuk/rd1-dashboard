@@ -84,8 +84,8 @@ let getSystemHealthData = () => {
 /* GET home page. */
 router.get('/find', function (req, res, next) {
     let options = {
-        host: 'http://127.0.0.1:5051',
-        path: FIND_URL
+        host: 'http://127.0.0.1:5051' + FIND_URL
+        // path: FIND_URL
     }
     let request = http.request(options, function (res) {
         let data = '';
