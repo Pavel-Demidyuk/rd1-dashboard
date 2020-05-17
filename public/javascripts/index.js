@@ -1,4 +1,4 @@
-const FIND_LINK = "http://127.0.0.1:5000/find"
+const FIND_LINK = "/find"
 
 $(document).ready(() => {
     $("#find").click(() => {

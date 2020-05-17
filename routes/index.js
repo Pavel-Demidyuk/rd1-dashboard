@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var http = require('http');
 const {exec} = require('child_process'),
-    FIND_URL = '/find_json'
+    FIND_URL = '/find/json'
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -94,7 +94,7 @@ router.get('/find', function (req, res, next) {
         });
         res.on('end', function () {
             res.render('devices', {
-                devices: data,
+                devices: data.devices,
                 length: data.length
             });
         });
