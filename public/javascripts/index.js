@@ -1,12 +1,14 @@
+const FIND_LINK = "http://127.0.0.1:5000/find"
+
 $(document).ready(() => {
     $("#find").click(() => {
         $("#find").hide()
         $("#loading").show()
-        window.location.href = "/find"
+        window.location.href = FIND_LINK
     })
 
     $("#repeat_find").click(() => {
-        window.location.href = "/find"
+        window.location.href = FIND_LINK
     })
 
     $("#main_page_button").click(() => {
