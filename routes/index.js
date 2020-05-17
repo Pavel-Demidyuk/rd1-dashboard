@@ -88,12 +88,12 @@ router.get('/find', function (req, res, next) {
         path: FIND_URL,
         port: 5051
     }
-    let request = http.request(options, function (res) {
+    let request = http.request(options, function (result) {
         let data = '';
-        res.on('data', function (chunk) {
+        result.on('data', function (chunk) {
             data += chunk;
         });
-        res.on('end', function () {
+        result.on('end', function () {
             res.render('devices', {
                 devices: data.devices,
                 length: data.length
