@@ -24,6 +24,14 @@ router.get('/status_json', function (req, res, next) {
     })
 });
 
+router.get('/cpu', function (req, res, next) {
+    exec('vcgencmd measure_temp', (err, stdout, stderr) => {
+        res.send({
+            cpu: stdout
+        });
+    })
+});
+
 let getIp = () => {
     return new Promise(resolve => {
         exec('hostname -I', (err, stdout, stderr) => {

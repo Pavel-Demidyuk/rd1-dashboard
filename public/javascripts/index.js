@@ -13,13 +13,21 @@ $(document).ready(() => {
         window.location.href = "/"
     })
     updateTime()
-    setTimeout(updateStatusHandler, 30000)
+    setTimeout(updateStatusHandler, 5000)
 })
 
 let updateTime = () => {
     $('#time').html('')
     let date = new Date();
     $('#time').html(date.getHours() + ':' + date.getMinutes())
+}
+
+let updateCpu = () => {
+    $.get('cpu', result => {
+        $('#cpu').html(result)
+    }).fail(function () {
+        console.log('error')
+    })
 }
 
 let updateStatusHandler = () => {
@@ -35,6 +43,7 @@ let updateStatusHandler = () => {
     })
 
     updateTime()
-    setTimeout(updateStatusHandler, 6000)
+    updateCpu()
+    setTimeout(updateStatusHandler, 10000)
 }
 

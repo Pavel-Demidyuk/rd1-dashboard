@@ -72,3 +72,7 @@ body {
 .yellow {
   color: #e6e700
 }
+#cpu {
+  clear:both;
+  margin-top:10px;
+}
