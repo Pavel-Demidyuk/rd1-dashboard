@@ -24,7 +24,7 @@ let updateTime = () => {
 
 let updateCpu = () => {
     $.get('cpu', result => {
-        $('#cpu').html(result)
+        $('#cpu').html(result.cpu)
     }).fail(function () {
         console.log('error')
     })
