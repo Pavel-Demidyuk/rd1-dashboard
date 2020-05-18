@@ -1,6 +1,11 @@
 const FIND_LINK = "/find"
 
 $(document).ready(() => {
+
+    $("#footer").click(() => {
+        window.location.href = "/"
+    })
+
     $("#find").click(() => {
         $("#find").hide()
         $("#loading").show()

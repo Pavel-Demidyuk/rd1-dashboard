@@ -94,9 +94,10 @@ router.get('/find', function (req, res, next) {
             data += chunk;
         });
         result.on('end', function () {
+            console.log(!!!, data)
             res.render('devices', {
                 devices: data.devices,
-                length: data.length
+                length: data.devices.length
             });
         });
     });
