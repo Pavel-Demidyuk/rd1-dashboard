@@ -6,15 +6,21 @@ const {exec} = require('child_process'),
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    Promise.all([getSystemHealthData(), getIp()]).then(result => {
+    Promise.all([getSystemHealthData()]).then(result => {
         res.render('index', {
             title: 'RD1 Dashboard',
-            containers: result[0],
-            ip: result[1]
+            containers: result[0]
         });
     })
 });
 
+router.get('/ip', function (req, res, next) {
+    Promise.all([getIp()]).then(result => {
+        res.send(JSON.stringify({
+            ip: result[0]
+        }));
+    })
+});
 
 router.get('/status_json', function (req, res, next) {
     getSystemHealthData().then(containers => {
