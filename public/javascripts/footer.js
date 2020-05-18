@@ -18,7 +18,7 @@ let updateTime = () => {
 
 let updateCpu = () => {
     $.get('cpu', result => {
-        result = JSON.parse(result)
+        // result = JSON.parse(result)
         $('#cpu').html(result.cpu)
     }).fail(function () {
         console.log('error')
