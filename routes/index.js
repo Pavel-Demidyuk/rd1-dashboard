@@ -94,7 +94,7 @@ router.get('/find', function (req, res, next) {
             data += chunk;
         });
         result.on('end', function () {
-            console.log(!!!, data)
+            console.log('!!!', data)
             res.render('devices', {
                 devices: data.devices,
                 length: data.devices.length
