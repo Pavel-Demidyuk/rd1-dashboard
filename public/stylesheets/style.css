@@ -28,7 +28,8 @@ body {
 }
 .mdl-data-table td {
   height: 25px;
-  padding: 0px 4px;
+  padding: 0 4px 0 0;
+  text-align: left;
 }
 .mdl-progress {
   width:475px
