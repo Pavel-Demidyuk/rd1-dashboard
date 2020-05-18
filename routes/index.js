@@ -15,9 +15,17 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/ip', function (req, res, next) {
-    Promise.all([getIp()]).then(result => {
+    getIp().then(result => {
         res.send(JSON.stringify({
-            ip: result[0]
+            ip: result
+        }));
+    })
+});
+
+router.get('/time', function (req, res, next) {
+    getTime().then(result => {
+        res.send(JSON.stringify({
+            time: result
         }));
     })
 });
@@ -50,9 +58,21 @@ let getIp = () => {
     })
 }
 
+let getTime = () => {
+    return new Promise(resolve => {
+        exec('date', (err, stdout, stderr) => {
+            if (err) {
+                resolve('undefined on mac')
+            } else {
+                resolve(stdout)
+            }
+        });
+    })
+}
+
 let getSystemHealthData = () => {
     let parseColorStatus = (state) => {
-        if (state.toLowerCase().includes('unhealthy') || state.toLowerCase().includes('exit')|| state.toLowerCase().includes('dead')) {
+        if (state.toLowerCase().includes('unhealthy') || state.toLowerCase().includes('exit') || state.toLowerCase().includes('dead')) {
             return 'red'
         }
         if (state.toLowerCase().includes('healthy')) {
