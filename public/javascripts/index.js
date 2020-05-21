@@ -1,18 +1,18 @@
 const FIND_LINK = "/find"
 
 $(document).ready(() => {
-    $( function() {
-        $( "#tabs" ).tabs();
-    } );
+    $(function () {
+        $("#tabs").tabs();
+    });
 
     $("#cleanup").dblclick(() => {
         console.log("Cleanup")
         $.get('/cleanup')
             .done(_ => {
-                alert('done')
+                info('Очистка завершена. Система перезагружается, это может занять несколько минут.')
             })
             .fail(_ => {
-                alert('error')
+                error('Ошибка перезагрузки системы.')
             })
     })
     setTimeout(updateStatusHandler, 5000)
@@ -21,14 +21,26 @@ $(document).ready(() => {
 let error = message => {
     $("#dialog_error").html(message)
     $("#dialog_error").dialog({
-        position:{ my: "right-100 top-250"}
+        position: {my: "right-100 top-250"},
+        buttons: [{
+            text: "Закрыть",
+            click: function () {
+                $(this).dialog("close");
+            }
+        }]
     });
 }
 
 let info = message => {
     $("#dialog_info").html(message)
     $("#dialog_info").dialog({
-        position:{ my: "right-100 top-250"}
+        position: {my: "right-100 top-250"},
+        buttons: [{
+            text: "Закрыть",
+            click: function () {
+                $(this).dialog("close");
+            }
+        }]
     });
 }
 
