@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var http = require('http');
 const {exec} = require('child_process'),
-    FIND_URL = '/find/json'
+    FIND_URL = '/find?json=true'
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
