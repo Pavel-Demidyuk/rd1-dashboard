@@ -1,4 +1,4 @@
-const FIND_LINK = "/find"
+const FIND_LINK = "/find?json=true"
 
 $(document).ready(() => {
     $("#find").click(() => {
