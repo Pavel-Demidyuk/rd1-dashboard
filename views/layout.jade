@@ -4,13 +4,17 @@ html
         title= title
         link(rel='stylesheet', href='/stylesheets/material.min.css')
         link(rel='stylesheet', href='/stylesheets/style.css')
+        link(rel='stylesheet', href='/stylesheets/jquery-ui.min.css')
+        link(rel='stylesheet', href='/stylesheets/theme.css')
         script(src='/javascripts/material.min.js')
         script(src='/javascripts/jquery.js')
+        script(src='/javascripts/jquery-ui.min.js')
 
     body
         block content
-        #footer
-            #ip ...
-            #time ...
-            #cpu ...
-        script(src='/javascripts/footer.js')
+        #dialog_error(title='Ошибка')
+            p
+        #dialog_info(title='Инфо')
+            p
+        script(src='/javascripts/state.js')
+        script(src='/javascripts/find.js')

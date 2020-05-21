@@ -1,25 +1,19 @@
 extends layout
 
 block content
-    #main_content
-        #menu
-            #control_buttons
-                    button#find(disabled="disabled").mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent.big_button Поиск устройств
-                    button#cleanup.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button.big_button Очистить все сохраненные
-            #loading
-                | поиск устройств...
-                #p1.mdl-progress.mdl-js-progress.mdl-progress__indeterminate
-        #services_table
-            table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp.services_table
-                thead
-                    tr
-                        th.mdl-data-table__cell--non-numeric Сервис
-                        th Статус
-                tbody
-                    each container in containers
-                        tr
-                            td #{container.name}
-                            td #{container.state}
-                                span.state(class=container.status) &#9733;
+    #tabs
+        ul
+            li
+                a(href='#tabs-1') Сервисы
+            li
+                a(href='#tabs-2') Поиск
+            li
+                a(href='#tabs-3') Состояние
+        #tabs-1
+            include tabs/services
 
+        #tabs-2
+            include tabs/find
+        #tabs-3
+            include tabs/state
     script(src='/javascripts/index.js')

@@ -114,31 +114,31 @@ let getSystemHealthData = () => {
         });
     })
 }
-
-/* GET home page. */
-router.get('/find', function (req, res, next) {
-    let options = {
-        // host: 'http://127.0.0.1:5051' + FIND_URL
-        path: FIND_URL,
-        port: 5051
-    }
-    let request = http.request(options, function (result) {
-        let data = '';
-        result.on('data', function (chunk) {
-            data += chunk;
-        });
-        result.on('end', function () {
-            console.log('!!!', data)
-            data = JSON.parse(data)
-            res.render('devices', {
-                devices: data.devices,
-                length: data.devices.length
-            });
-        });
-    });
-    request.on('error', function (e) {
-        console.log(e.message);
-    });
-    request.end();
-});
+//
+// /* GET home page. */
+// router.get('/find', function (req, res, next) {
+//     let options = {
+//         // host: 'http://127.0.0.1:5051' + FIND_URL
+//         path: FIND_URL,
+//         port: 5051
+//     }
+//     let request = http.request(options, function (result) {
+//         let data = '';
+//         result.on('data', function (chunk) {
+//             data += chunk;
+//         });
+//         result.on('end', function () {
+//             console.log('!!!', data)
+//             data = JSON.parse(data)
+//             res.render('devices', {
+//                 devices: data.devices,
+//                 length: data.devices.length
+//             });
+//         });
+//     });
+//     request.on('error', function (e) {
+//         console.log(e.message);
+//     });
+//     request.end();
+// });
 module.exports = router;

@@ -1,15 +1,9 @@
 const FIND_LINK = "/find"
 
 $(document).ready(() => {
-    $("#find").click(() => {
-        $("#find").hide()
-        $("#loading").show()
-        window.location.href = FIND_LINK
-    })
-
-    $("#repeat_find").click(() => {
-        window.location.href = FIND_LINK
-    })
+    $( function() {
+        $( "#tabs" ).tabs();
+    } );
 
     $("#cleanup").dblclick(() => {
         console.log("Cleanup")
@@ -21,25 +15,35 @@ $(document).ready(() => {
                 alert('error')
             })
     })
-    $("#main_page_button").click(() => {
-        window.location.href = "/"
-    })
     setTimeout(updateStatusHandler, 5000)
 })
 
+let error = message => {
+    $("#dialog_error").html(message)
+    $("#dialog_error").dialog({
+        position:{ my: "right-100 top-250"}
+    });
+}
+
+let info = message => {
+    $("#dialog_info").html(message)
+    $("#dialog_info").dialog({
+        position:{ my: "right-100 top-250"}
+    });
+}
 
 let updateStatusHandler = () => {
     console.log("Updating statuses")
     $.get('status_json', result => {
         result = JSON.parse(result)
-        $('tbody').html('')
+        $('tbody#services').html('')
         let allGreen = true
         result.containers.forEach(container => {
             if (container.status === 'red') {
                 console.log("!!!!!!!", container)
                 allGreen = false
             }
-            $('tbody').prepend(`<tr><td>${container.name}</td><td>${container.state}<span class='state ${container.status}'>&#9733;</span></td></td></tr>`)
+            $('tbody#services').prepend(`<tr><td>${container.name}</td><td>${container.state}<span class='state ${container.status}'>&#9733;</span></td></td></tr>`)
         })
 
         if (allGreen) {

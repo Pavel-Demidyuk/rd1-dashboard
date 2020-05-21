@@ -1,0 +1,15 @@
+#loading
+    | Идет поиск устройств, это может занять несколько минут. Не закрывайте это окно.
+    | В этом время устройства в распеределительном щитке будут включаться и выключаться, это нормально.
+    | Чтобы все устройства нашлись, пожалуйста, не пользуйтесь выключателями во время поиска устройств.
+#find_tab
+    button#find().mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent.big_button Поиск устройств
+    div(style='margin-top:25px')
+    | <small>Для удаления всех сохраненных устройств <b>дважды</b> нажмите на кнопку ниже</small>
+    div
+        button#cleanup.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button.big_button Очистить все сохраненные
+    #dialog_device(title='Новое устройство')
+        p
+            | Устройство
+            span#dialog_device_context
+
