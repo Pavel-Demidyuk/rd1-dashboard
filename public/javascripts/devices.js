@@ -40,8 +40,6 @@ let udpateTime = () => {
 }
 
 
-
-
 let saveDevicesHandler = () => {
     $('[data-card="0"]').show();
 
@@ -63,17 +61,19 @@ let saveDevicesHandler = () => {
         let index = btn.closest('.card').data('card')
         let service = btn.data('service')
         // let name = $('input[name=name_' + id + ']').val()
-        $.get('http://127.0.0.1:5051/raw/1wire/register/?id=' + id + '&service=' + service + '&name=' + id, result => {
-            console.log(result)
-            $('#card_' + id).hide()
-            let nextIndex = index + 1
-            if ($('[data-card="' + nextIndex + '"]').length) {
-                $('[data-card="' + nextIndex + '"]').show();
-            } else {
-                window.location.href = "/"
+        $.ajax({
+            type: 'GET',
+            crossDomain: true,
+            url: 'http://127.0.0.1:5051/raw/1wire/register/?id=' + id + '&service=' + service + '&name=' + id,
+            success: () => {
+                $('#card_' + id).hide()
+                let nextIndex = index + 1
+                if ($('[data-card="' + nextIndex + '"]').length) {
+                    $('[data-card="' + nextIndex + '"]').show();
+                } else {
+                    window.location.href = "/"
+                }
             }
-        }).fail(function () {
-            console.log('error')
         })
     })
 }
