@@ -37,15 +37,19 @@ body {
 }
 
 .green {
-    color: green
+    background-color: green;
+    padding: 3px
 }
 
 .red {
-    color: red
+    background-color: #ad1457;
+    color: #fff;
+    padding: 3px
 }
 
 .yellow {
-    color: #e6e700
+    background-color: #e6e700;
+    padding: 3px
 }
 
 /*new*/
@@ -53,12 +57,19 @@ body {
     max-width: 472px;
     min-height: 312px;
 }
+
 #dialog_device {
-  display: none;
+    display: none;
 }
+
 #dialog_error {
-  display: none;
+    display: none;
 }
+
 #dialog_info {
-  display: none;
+    display: none;
+}
+
+a.ui-tabs-anchor {
+    padding: 20px;
 }

@@ -52,10 +52,9 @@ let updateStatusHandler = () => {
         let allGreen = true
         result.containers.forEach(container => {
             if (container.status === 'red') {
-                console.log("!!!!!!!", container)
                 allGreen = false
             }
-            $('tbody#services').prepend(`<tr><td>${container.name}</td><td>${container.state}<span class='state ${container.status}'>&#9733;</span></td></td></tr>`)
+            $('tbody#services').append(`<tr><td class="${container.status}">${container.name}</td><td class="${container.status}">${container.state}</td></td></tr>`)
         })
 
         if (allGreen) {

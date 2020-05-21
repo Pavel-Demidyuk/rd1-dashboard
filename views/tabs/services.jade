@@ -7,6 +7,5 @@
         tbody#services
             each container in containers
                 tr
-                    td #{container.name}
-                    td #{container.state}
-                        span.state(class=container.status) &#9733;
+                    td(class=container.status) #{container.name}
+                    td(class=container.status) #{container.state}
