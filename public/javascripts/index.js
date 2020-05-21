@@ -5,16 +5,6 @@ $(document).ready(() => {
         $("#tabs").tabs();
     });
 
-    $("#cleanup").dblclick(() => {
-        console.log("Cleanup")
-        $.get('/cleanup')
-            .done(_ => {
-                info('Очистка завершена. Система перезагружается, это может занять несколько минут.')
-            })
-            .fail(_ => {
-                error('Ошибка перезагрузки системы.')
-            })
-    })
     setTimeout(updateStatusHandler, 5000)
 })
 

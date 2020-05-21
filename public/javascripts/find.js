@@ -2,6 +2,20 @@ const TOGGLE_URL = 'http://127.0.0.1:5051/raw/3A/toggle/',
     SAVE_URL = 'http://127.0.0.1:5051/raw/1wire/register/?id='
 
 $(document).ready(() => {
+    $("#cleanup").dblclick(() => {
+        info('Запущено удаление устройств, это может занять несколько минут. ' +
+            'После завершения удаления, система будет перезагружена автоматически.')
+
+        $.get('/cleanup')
+            .done(_ => {
+                info('Удаление завершено. Система в процессе запуска. ' +
+                    'Состояние системы можно посмотреть во вкладке "Сервисы"')
+            })
+            .fail(_ => {
+                error('Ошибка перезагрузки системы.')
+            })
+    })
+
     $("#find").click(() => {
         foundDevices = []
         $("#find_tab").hide()
@@ -64,7 +78,7 @@ let save = (index, type) => {
         crossDomain: true,
         url: SAVE_URL + foundDevices[index].uuid + '&service=' + type + '&name=' + index + 1,
         success: _ => {
-            $("#dialog_device").dialog( "destroy" );
+            $("#dialog_device").dialog("destroy");
             if (foundDevices[index + 1]) {
                 showDeviceDialog(index + 1)
             }
