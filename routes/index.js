@@ -14,6 +14,14 @@ router.get('/', function (req, res, next) {
     })
 });
 
+router.get('/cleanup', function (req, res, next) {
+    exec('rm -rf /root/rd1/configs/homebridge/accessories && rm -rf /root/rd1/configs/homebridge/persist', (err, stdout, stderr) => {
+        res.send(JSON.stringify({
+            done: true
+        }));
+    })
+});
+
 router.get('/ip', function (req, res, next) {
     getIp().then(result => {
         res.send(JSON.stringify({

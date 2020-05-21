@@ -78,3 +78,7 @@ body {
   clear:both;
   margin-top:10px;
 }
+#cleanup {
+  background-color: #d500f9;
+  margin-left:3px;
+}
