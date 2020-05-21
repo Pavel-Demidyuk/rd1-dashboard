@@ -128,8 +128,8 @@ router.get('/find', function (req, res, next) {
             data += chunk;
         });
         result.on('end', function () {
-            data = JSON.parse(data)
             console.log('!!!', data)
+            data = JSON.parse(data)
             res.render('devices', {
                 devices: data.devices,
                 length: data.devices.length
