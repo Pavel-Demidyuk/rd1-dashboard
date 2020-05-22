@@ -22,7 +22,7 @@ router.get('/', function (req, res, next) {
 
     router.get('/cleanup', function (req, res, next) {
         exec('rm -rf /root/rd1/configs/homebridge/accessories && rm -rf /root/rd1/configs/homebridge/persist && ' +
-            ' cd /root/rd1 && boot/bash/reboot.sh', (err, stdout, stderr) => {
+            ' cd /root/rd1 && boot/bash/update.sh && boot/bash/reboot.sh', (err, stdout, stderr) => {
             res.send(JSON.stringify({
                 done: true
             }));
