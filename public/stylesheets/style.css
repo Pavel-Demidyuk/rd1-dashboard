@@ -85,4 +85,5 @@ a.ui-tabs-anchor {
     background-image: url("/images/logo.svg");
     background-repeat: no-repeat;
     background-position: center top;
+    background-size: 200px;
 }
