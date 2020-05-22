@@ -2,7 +2,19 @@ body {
     overflow: hidden;
     /*cursor: none;*/
     background: rgb(17, 29, 16);
-    background: #000
+    background: #000;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+}
+
+a {
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-app-region: no-drag;
 }
 
 .services_table {
