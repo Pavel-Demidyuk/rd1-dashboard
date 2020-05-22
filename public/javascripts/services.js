@@ -5,7 +5,7 @@ let updateStatusHandler = () => {
         $('tbody#services').html('')
         let allGreen = false
         result.containers.forEach(container => {
-            if (container.name.includes('rd1-app') && container.status != 'green') {
+            if (container.name.includes('rd1-app') && container.status === 'green') {
                 allGreen = true
             }
             $('tbody#services').append(`<tr><td class="${container.status}">${container.name}</td><td class="${container.status}">${container.state}</td></td></tr>`)
