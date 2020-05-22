@@ -1,8 +1,9 @@
 let mousetimeout;
 let screensaver_active = false;
-let idletime = 1;
+let idletime = 5;
 
 function show_screensaver() {
+    console.log('starting screensaver')
     $('#screensaver').fadeIn();
     screensaver_active = true;
     screensaver_animation();
@@ -14,15 +15,6 @@ function stop_screensaver() {
     screensaver_active = false;
 }
 
-function getRandomColor() {
-    let letters = '0123456789ABCDEF'.split('');
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.round(Math.random() * 15)];
-    }
-    return color;
-}
-
 $(document).mousemove(function () {
     clearTimeout(mousetimeout);
 
@@ -31,8 +23,8 @@ $(document).mousemove(function () {
     }
 
     mousetimeout = setTimeout(function () {
-
-    }, 1000 * idletime); // 5 secs
+        show_screensaver()
+    }, 1000 * idletime);
 });
 
 $(document).ready(() => {
@@ -51,7 +43,7 @@ function screensaver_animation() {
                 'background-position-x': getRandomPosition(),
                 'background-position-y': getRandomPosition()
             },
-            5000,
+            10000,
             screensaver_animation);
     }
 }
