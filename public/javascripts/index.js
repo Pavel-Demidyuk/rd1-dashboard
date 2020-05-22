@@ -1,11 +1,7 @@
-const FIND_LINK = "/find"
-
 $(document).ready(() => {
     $(function () {
         $("#tabs").tabs();
     });
-
-    setTimeout(updateStatusHandler, 5000)
 })
 
 let error = message => {
@@ -32,32 +28,5 @@ let info = message => {
             }
         }]
     });
-}
-
-let updateStatusHandler = () => {
-    console.log("Updating statuses")
-    $.get('status_json', result => {
-        result = JSON.parse(result)
-        $('tbody#services').html('')
-        let allGreen = true
-        result.containers.forEach(container => {
-            if (container.status === 'red') {
-                allGreen = false
-            }
-            $('tbody#services').append(`<tr><td class="${container.status}">${container.name}</td><td class="${container.status}">${container.state}</td></td></tr>`)
-        })
-
-        if (allGreen) {
-            console.log('showing....')
-            $('#find').prop('disabled', false);
-        } else {
-            console.log('disabling button')
-            $('#find').prop('disabled', true);
-        }
-    }).fail(function () {
-        console.log('error')
-    })
-
-    setTimeout(updateStatusHandler, 10000)
 }
 

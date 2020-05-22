@@ -28,18 +28,22 @@ $(document).ready(() => {
                     foundDevices = devices.devices
                     showDeviceDialog(0)
                 } else {
-                    info('Поиск завершен. Устройства не найдены.')
+                    info('Новые устройства не найдены. ' +
+                        '<br> Всего проверено устройств <b>' + devices.totalRawCount + '</b>' +
+                        '<br> Ранее сохраненные: <b>' + devices.totalSavedCount + '</b>'
+                    )
                 }
             })
             .fail(err => {
                 $("#loading").hide()
+                $("#find_tab").show()
                 error('Ошибка при загрузке новых устройств, попробуйте снова или свяжитесь с поддержкой.')
             })
     })
 })
 
 let showDeviceDialog = index => {
-    $("#dialog_device_context").html(' ' + index + 1 + ' из ' + foundDevices.length)
+    $("#dialog_device_context").html(' ' + (index + 1) + ' из ' + foundDevices.length)
     $("#dialog_device").dialog({
         position: {my: "right-100 top-250"},
         buttons: [
