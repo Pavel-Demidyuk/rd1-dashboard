@@ -13,8 +13,10 @@ let updateStatusHandler = () => {
 
         if (allGreen) {
             $('#find').prop('disabled', false);
+            $('#cleanup').prop('disabled', false);
         } else {
             $('#find').prop('disabled', true);
+            $('#cleanup').prop('disabled', true);
         }
     }).fail(function () {
         console.log('error')

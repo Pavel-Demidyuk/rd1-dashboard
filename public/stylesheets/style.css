@@ -26,6 +26,10 @@ a {
     display: none;
 }
 
+#cleanup_info {
+    display: none;
+}
+
 .mdl-progress {
     width: 475px
 }
@@ -91,8 +95,13 @@ a.ui-tabs-anchor {
 }
 
 #screensaver {
-    position: absolute; width: 480px; height:320px; left:0px; top: 0px;
-    display: block; z-index:9999;
+    position: absolute;
+    width: 480px;
+    height: 320px;
+    left: 0px;
+    top: 0px;
+    display: block;
+    z-index: 9999;
     background-color: #000;
     background-image: url("/images/logo.svg");
     background-repeat: no-repeat;
