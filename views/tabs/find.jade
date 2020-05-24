@@ -1,3 +1,5 @@
+#dialog_cleanup_confirm
+    | Вы действительно хотите удалить все сохраненный устройства?
 #loading
     div.mdl-spinner.mdl-js-spinner.is-active
     p Идет поиск устройств, это может занять несколько минут. Пожалуйста, не пользуйтесь выключателями во время поиска.
@@ -7,11 +9,9 @@
     p  Запущено удаление устройств, это может занять несколько минут.
     p  После завершения удаления, система будет перезагружена автоматически.
 #find_tab
-    button#find(disabled="disabled").mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent.big_button Поиск устройств
-    div(style='margin-top:25px')
-    | <small>Для удаления всех сохраненных устройств <b>дважды</b> нажмите на кнопку ниже</small>
+    button#find().mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent.big_button Поиск устройств
     div
-        button#cleanup(disabled="disabled").mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button.big_button Очистить все сохраненные
+        button#cleanup().mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button.big_button Очистить все сохраненные
     #dialog_device(title='Новое устройство')
         p
             | Устройство

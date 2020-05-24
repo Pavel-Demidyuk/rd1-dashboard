@@ -2,7 +2,25 @@ const TOGGLE_URL = 'http://127.0.0.1:5051/raw/3A/toggle/',
     SAVE_URL = 'http://127.0.0.1:5051/raw/1wire/register/?id='
 
 $(document).ready(() => {
-    $("#cleanup").dblclick(() => {
+    $("#cleanup").click(_ => {
+        $("#dialog_cleanup_confirm").dialog({
+            buttons: [{
+                text: "Да, продолжить",
+                click: () => {
+                    cleanup();
+                    $("#dialog_cleanup_confirm").dialog("close");
+                }
+            },
+                {
+                    text: "Отмена",
+                    click: function () {
+                        $(this).dialog("close");
+                    }
+                }]
+        })
+    })
+
+    let cleanup = () => {
         $('#loading').hide()
         $('#find_tab').hide()
         $('#cleanup_info').show();
@@ -18,7 +36,7 @@ $(document).ready(() => {
                 $('#find_tab').show();
                 error('Ошибка перезагрузки системы.')
             })
-    })
+    }
 
     $("#find").click(() => {
         foundDevices = []
