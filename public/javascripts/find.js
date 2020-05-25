@@ -102,7 +102,7 @@ let save = (index, type) => {
     $.ajax({
         type: 'GET',
         crossDomain: true,
-        url: SAVE_URL + foundDevices[index].uuid + '&service=' + type + '&name=' + index + 1,
+        url: SAVE_URL + foundDevices[index].uuid + '&service=' + type + '&name=' + (index + 1),
         success: _ => {
             $("#dialog_device").dialog("destroy");
             if (foundDevices[index + 1]) {
