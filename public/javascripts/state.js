@@ -1,10 +1,7 @@
-
 $(document).ready(() => {
-    $("#footer").click(() => {
-        window.location.href = "/"
-    })
+    setTimeout(updateAll, 5000)
+
     updateIp(); // do it just once
-    setTimeout(update, 5000)
 })
 
 let updateTime = () => {
@@ -34,10 +31,21 @@ let updateIp = () => {
     })
 }
 
-let update = () => {
-    console.log("Footer update...")
+let updateHealth = () => {
+    $.get('health', result => {
+        result = JSON.parse(result)
+        $('#health').html('Health: ' + result.status +
+            '<br/> Registered devices: ' + result.devicesCount)
+    }).fail(function () {
+        console.log('error')
+    })
+}
+
+let updateAll = () => {
+    console.log("Footer updateAll...")
     updateTime()
     updateCpu()
-    setTimeout(update, 10000)
+    updateHealth()
+    setTimeout(updateAll, 10000)
 }
 
