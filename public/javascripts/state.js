@@ -2,6 +2,7 @@ $(document).ready(() => {
     setTimeout(updateAll, 5000)
 
     updateIp(); // do it just once
+    updatePublicIp(); // do it just once
 })
 
 let updateTime = () => {
@@ -29,6 +30,19 @@ let updateIp = () => {
     }).fail(function () {
         console.log('error')
     })
+
+    setTimeout(updateIp, 3600000)
+}
+
+let updatePublicIp = () => {
+    $.get('public_ip', result => {
+        result = JSON.parse(result)
+        $('#public_ip').html(result.ip)
+    }).fail(function () {
+        console.log('error')
+    })
+
+    setTimeout(updatePublicIp, 3600000)
 }
 
 let updateHealth = () => {

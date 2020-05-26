@@ -37,6 +37,14 @@ router.get('/ip', function (req, res, next) {
     })
 });
 
+router.get('/public_ip', function (req, res, next) {
+    getPublicIp().then(result => {
+        res.send(JSON.stringify({
+            ip: result
+        }));
+    })
+});
+
 router.get('/time', function (req, res, next) {
     getTime().then(result => {
         res.send(JSON.stringify({
@@ -77,6 +85,18 @@ let getIp = () => {
         exec('hostname -I', (err, stdout, stderr) => {
             if (err) {
                 resolve('undefined on mac')
+            } else {
+                resolve(stdout)
+            }
+        });
+    })
+}
+
+let getPublicIp = () => {
+    return new Promise(resolve => {
+        exec('curl icanhazip.com', (err, stdout, stderr) => {
+            if (err) {
+                resolve('error')
             } else {
                 resolve(stdout)
             }
