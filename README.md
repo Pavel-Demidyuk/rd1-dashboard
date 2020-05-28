@@ -1,4 +1,3 @@
-# preloader when saving, since could take time...
 # numbers should start from count + 1
 # crontab ps aux too many unclutter
 # logs from dashboard remove

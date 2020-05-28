@@ -1,5 +1,6 @@
 const TOGGLE_URL = 'http://127.0.0.1:5051/raw/3A/toggle/',
-    SAVE_URL = 'http://127.0.0.1:5051/raw/1wire/register/?id='
+    SAVE_URL = 'http://127.0.0.1:5051/raw/1wire/register/?id=',
+    FIND_URL = 'http://127.0.0.1:5051/find?json=true'
 
 $(document).ready(() => {
     $("#cleanup").click(_ => {
@@ -42,12 +43,13 @@ $(document).ready(() => {
         foundDevices = []
         $("#find_tab").hide()
         $("#loading").show()
-        $.get('http://127.0.0.1:5051/find?json=true')
+        $.get(FIND_URL)
             .done(devices => {
                 $("#loading").hide()
                 $("#find_tab").show()
                 if (devices.devices.length) {
                     foundDevices = devices.devices
+                    totalFound = devices.totalSavedCount
                     showDeviceDialog(0)
                 } else {
                     info('Новые устройства не найдены. ' +
@@ -105,7 +107,7 @@ let save = (index, type) => {
     $.ajax({
         type: 'GET',
         crossDomain: true,
-        url: SAVE_URL + foundDevices[index].uuid + '&service=' + type + '&name=' + (index + 1),
+        url: SAVE_URL + foundDevices[index].uuid + '&service=' + type + '&name=' + (totalSavedCount + index + 1),
         success: _ => {
             $("#dialog_device").dialog("destroy");
             if (foundDevices[index + 1]) {
