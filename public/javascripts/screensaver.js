@@ -1,6 +1,6 @@
 let mousetimeout;
 let screensaver_active = false;
-let idletime = 60;
+let idletime = 180;
 
 function show_screensaver() {
     console.log('starting screensaver')

@@ -22,7 +22,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/cleanup', function (req, res, next) {
-    exec('cd /root/rd1 && boot/bash/cleanup.sh && boot/bash/update.sh && boot/bash/services/rd1_run.sh', (err, stdout, stderr) => {
+    exec('cd /root/rd1 && boot/bash/stop.sh && sleep 5 && boot/bash/cleanup.sh && boot/bash/update.sh && boot/bash/services/rd1_run.sh', (err, stdout, stderr) => {
         res.send(JSON.stringify({
             done: true
         }));
