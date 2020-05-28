@@ -67,7 +67,7 @@ $(document).ready(() => {
 let showDeviceDialog = index => {
     $("#dialog_device_context").html(' ' + (index + 1) + ' из ' + foundDevices.length)
     $("#dialog_device").dialog({
-        position: {my: "right-100 top-250"},
+        // position: {my: "right-100 top-250"},
         buttons: [
             {
                 text: "ВКЛ",
@@ -77,12 +77,14 @@ let showDeviceDialog = index => {
             }, {
                 text: "Розетка",
                 click: function () {
+                    $(this).hide()
                     save(index, 'Outlet')
                 }
             }, {
                 text: "Свет",
                 click: function () {
-                    save(index, 'Switch')
+                    $(this).hide()
+                    save(index, 'Lightbulb')
                 }
             }
         ]
@@ -99,6 +101,7 @@ let toggle = id => {
 }
 
 let save = (index, type) => {
+
     $.ajax({
         type: 'GET',
         crossDomain: true,

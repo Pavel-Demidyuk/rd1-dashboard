@@ -1,0 +1,3 @@
+# move add dialog to center
+# light fix
+# preloader when saving, since could take time...
