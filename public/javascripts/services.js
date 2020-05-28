@@ -22,7 +22,7 @@ let updateStatusHandler = () => {
         console.log('error')
     })
 
-    setTimeout(updateStatusHandler, 10000)
+    setTimeout(updateStatusHandler, 20000)
 }
 
 setTimeout(updateStatusHandler, 5000)
