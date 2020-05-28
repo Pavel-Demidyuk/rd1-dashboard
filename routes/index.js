@@ -80,6 +80,12 @@ router.get('/cpu', function (req, res, next) {
     })
 });
 
+router.get('/space', function (req, res, next) {
+    exec("df -hl / | awk 'NR == 2{print $5+0}'", (err, stdout, stderr) => {
+        res.send(stdout + '%');
+    })
+});
+
 let getIp = () => {
     return new Promise(resolve => {
         exec('hostname -I', (err, stdout, stderr) => {

@@ -1,8 +1,9 @@
 $(document).ready(() => {
     setTimeout(updateAll, 5000)
 
-    updateIp(); // do it just once
-    updatePublicIp(); // do it just once
+    updateIp();
+    updateSpace();
+    updatePublicIp();
 })
 
 let updateTime = () => {
@@ -12,6 +13,15 @@ let updateTime = () => {
     }).fail(function () {
         console.log('error')
     })
+}
+
+let updateSpace = () => {
+    $.get('space', result => {
+        $('#space').html(result)
+    }).fail(function () {
+        console.log('error')
+    })
+    setTimeout(updateSpace, 3600000)
 }
 
 let updateCpu = () => {
