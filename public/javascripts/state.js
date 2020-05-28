@@ -60,6 +60,8 @@ let updateHealth = () => {
         result = JSON.parse(result)
         $('#health').html('Health: ' + result.status +
             '<br/> Registered devices: ' + result.devicesCount)
+        $('#total_registered').html(result.devicesCount)
+        $('#total_physical').html(result.physicalCount)
     }).fail(function () {
         console.log('error')
     })
@@ -70,7 +72,7 @@ let updateAll = () => {
     updateTime()
     updateCpu()
     updateHealth()
-    setTimeout(updateAll, 10000)
+    setTimeout(updateAll, 20000)
 }
 
 $('#reboot').click(_ => {

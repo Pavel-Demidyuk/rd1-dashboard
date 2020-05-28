@@ -103,12 +103,12 @@ let toggle = id => {
 }
 
 let save = (index, type) => {
-
     $.ajax({
         type: 'GET',
         crossDomain: true,
         url: SAVE_URL + foundDevices[index].uuid + '&service=' + type + '&name=' + (totalSavedCount + index + 1),
         success: _ => {
+            updateHealth()
             $("#dialog_device").dialog("destroy");
             if (foundDevices[index + 1]) {
                 showDeviceDialog(index + 1)
