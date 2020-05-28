@@ -77,13 +77,13 @@ let showDeviceDialog = index => {
             }, {
                 text: "Розетка",
                 click: function () {
-                    $(this).hide()
+                    $(this).dialog("close");
                     save(index, 'Outlet')
                 }
             }, {
                 text: "Свет",
                 click: function () {
-                    $(this).hide()
+                    $(this).dialog("close");
                     save(index, 'Lightbulb')
                 }
             }
