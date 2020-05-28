@@ -49,7 +49,7 @@ $(document).ready(() => {
                 $("#find_tab").show()
                 if (devices.devices.length) {
                     foundDevices = devices.devices
-                    totalFound = devices.totalSavedCount
+                    totalSavedCount = devices.totalSavedCount
                     showDeviceDialog(0)
                 } else {
                     info('Новые устройства не найдены. ' +
