@@ -59,6 +59,14 @@ router.get('/health', function (req, res, next) {
     })
 });
 
+router.get('/reboot', function (req, res, next) {
+    exec('shutdown -r now', (err, stdout, stderr) => {
+        res.send({
+            reboot: 'started'
+        });
+    })
+});
+
 router.get('/status_json', function (req, res, next) {
     getServicesStatuses().then(containers => {
         res.send(JSON.stringify({

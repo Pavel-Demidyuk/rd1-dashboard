@@ -73,3 +73,28 @@ let updateAll = () => {
     setTimeout(updateAll, 10000)
 }
 
+$('#reboot').click(_ => {
+    $("#reboot_dialog").dialog({
+        buttons: [
+            {
+                text: "Перезагрузить",
+                click: function () {
+                    $.get('reboot', result => {
+                        $(this).dialog("close");
+                    }).fail(function () {
+                        $(this).dialog("close");
+                        erro('Произошла ошибка. Вы можете перезагрузить устройство с помощью отключения питания.')
+                    })
+                }
+            }, {
+                text: "Отмена",
+                click: function () {
+                    $(this).dialog("close");
+                }
+            }
+        ]
+    });
+})
+
+
+

@@ -124,3 +124,6 @@ table#states td {
 table#states, table.services_table{
     width: 100%
 }
+#reboot_dialog {
+    display: none;
+}
