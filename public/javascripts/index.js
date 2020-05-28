@@ -20,7 +20,7 @@ let error = message => {
 let info = message => {
     $("#dialog_info").html(message)
     $("#dialog_info").dialog({
-        position: {my: "right-100 top-250"},
+        // position: {my: "right-100 top-250"},
         buttons: [{
             text: "Закрыть",
             click: function () {

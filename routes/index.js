@@ -161,7 +161,7 @@ let getServicesStatuses = () => {
     }
 
     return new Promise((resolve, reject) => {
-        exec('docker container ls -a --format \'{{.Image}}***{{.Status}}\'', (err, stdout, stderr) => {
+        exec("docker container ls -a --format '{{.Names}}***{{.Status}}'", (err, stdout, stderr) => {
             let result = []
             if (err) {
                 console.error(err)

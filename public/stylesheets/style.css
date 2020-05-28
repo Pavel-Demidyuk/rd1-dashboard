@@ -117,3 +117,10 @@ button#cleanup {
 #dialog_cleanup_confirm {
     display: none;
 }
+table#states td {
+    background-color: #9e9e9e;
+    padding: 1px 5px 1px 5px;
+}
+table#states, table.services_table{
+    width: 100%
+}
