@@ -1,1 +1,1 @@
-* delete obsolete from hassio
+* reload button bigger
