@@ -70,20 +70,27 @@ let showDeviceDialog = index => {
     $("#dialog_device_context").html(' ' + (index + 1) + ' из ' + foundDevices.length)
     $("#dialog_device").dialog({
         // position: {my: "right-100 top-250"},
+        classes: {
+            "ui-dialog": "big_buttons"
+        },
         buttons: [
+
+            // {
+            //     text: "ВКЛ/ВЫКЛ",
+            //     click: function () {
+            //         toggle(foundDevices[index].uuid)
+            //     }
+            // },
             {
-                text: "ВКЛ",
-                click: function () {
-                    toggle(foundDevices[index].uuid)
-                }
-            }, {
                 text: "Розетка",
+                "class": "big_buttons",
                 click: function () {
                     $(this).dialog("close");
                     save(index, 'Outlet')
                 }
             }, {
                 text: "Свет",
+                "class": "big_buttons",
                 click: function () {
                     $(this).dialog("close");
                     save(index, 'Lightbulb')

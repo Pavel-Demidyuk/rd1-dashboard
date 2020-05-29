@@ -175,3 +175,8 @@ button#refresh {
     margin-top:10px;
 }
 
+.big_buttons {
+    width: 130px;
+    height: 80px;
+}
+
