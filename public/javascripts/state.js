@@ -1,3 +1,5 @@
+const HEALTH_URL = 'health'
+
 $(document).ready(() => {
     setTimeout(updateAll, 5000)
 
@@ -56,15 +58,17 @@ let updatePublicIp = () => {
 }
 
 let updateHealth = () => {
-    $.get('health', result => {
-        result = JSON.parse(result)
-        $('#health').html('Health: ' + result.status +
-            '<br/> Registered devices: ' + result.devicesCount)
-        $('#total_registered').html(result.devicesCount)
-        $('#total_physical').html(result.physicalCount)
-    }).fail(function () {
-        console.log('error')
-    })
+    $.ajax({
+        url: HEALTH_URL,
+        success: function(result){
+            result = JSON.parse(result)
+            $('#health').html('Health: ' + result.status +
+                '<br/> Registered devices: ' + result.devicesCount)
+            $('#total_registered').html(result.devicesCount)
+            $('#total_physical').html(result.physicalCount)
+        },
+        timeout: 5000 //in milliseconds
+    });
 }
 
 let updateAll = () => {

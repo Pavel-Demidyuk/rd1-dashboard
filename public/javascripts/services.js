@@ -25,4 +25,10 @@ let updateStatusHandler = () => {
     setTimeout(updateStatusHandler, 20000)
 }
 
+
+$('#refresh').click(_ => {
+    console.log("Reloading the page")
+    location.reload();
+})
+
 setTimeout(updateStatusHandler, 5000)

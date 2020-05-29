@@ -131,12 +131,13 @@ let getTime = () => {
 }
 
 let getHealth = () => {
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
         let options = {
-        // host: 'http://127.0.0.1:5051' + FIND_URL
-        path: HEALTH_URL,
-        port: 5051
-    }
+            // host: 'http://127.0.0.1:5051' + FIND_URL
+            path: HEALTH_URL,
+            port: 5051,
+            timeout: 5000
+        }
 
 
         let request = http.request(options, function (result) {
@@ -147,11 +148,10 @@ let getHealth = () => {
             result.on('end', function () {
                 // data = JSON.parse(data)
                 resolve(data)
-
             });
         });
         request.on('error', function (e) {
-            console.log(e.message);
+            reject('')
         });
         request.end();
     })
