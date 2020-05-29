@@ -1,0 +1,1 @@
+* delete obsolete from hassio

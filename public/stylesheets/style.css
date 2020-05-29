@@ -111,9 +111,10 @@ a.ui-tabs-anchor {
 }
 
 button#cleanup {
-    margin-top: 10px;
-}
+    margin-left:200px;
+    margin-top: 100px;
 
+}
 #dialog_cleanup_confirm {
     display: none;
 }
