@@ -1,6 +1,6 @@
-const TOGGLE_URL = 'http://127.0.0.1:5051/raw/3A/toggle/',
-    SAVE_URL = 'http://127.0.0.1:5051/raw/1wire/register/?id=',
-    FIND_URL = 'http://127.0.0.1:5051/find?json=true'
+const TOGGLE_URL = LOCAL_IP + '/raw/3A/toggle/',
+    SAVE_URL = LOCAL_IP + '/raw/1wire/register/?id=',
+    FIND_URL = LOCAL_IP + '/find?json=true'
 
 $(document).ready(() => {
     $("#cleanup").click(_ => {
@@ -64,6 +64,9 @@ $(document).ready(() => {
                 error('Ошибка при загрузке новых устройств, попробуйте снова или свяжитесь с поддержкой.')
             })
     })
+})
+$(".on_off").click(_ => {
+
 })
 
 let showDeviceDialog = index => {

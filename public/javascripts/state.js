@@ -39,6 +39,7 @@ let updateIp = () => {
     $.get('ip', result => {
         result = JSON.parse(result)
         $('#ip').html(result.ip)
+        LOCAL_IP = result.ip.split(' ')[0]
     }).fail(function () {
         console.log('error')
     })
