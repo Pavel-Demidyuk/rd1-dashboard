@@ -98,7 +98,7 @@ let getIp = () => {
     return new Promise(resolve => {
         exec('hostname -I', (err, stdout, stderr) => {
             if (err) {
-                resolve('undefined on mac')
+                resolve('127.0.0.1')
             } else {
                 resolve(stdout)
             }

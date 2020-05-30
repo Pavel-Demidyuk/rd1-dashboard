@@ -4,7 +4,7 @@ $(document).ready(() => {
     });
 })
 
-let LOCAL_IP = 'http://127.0.0.1:5051'
+let LOCAL_IP = '127.0.0.1'
 
 let error = message => {
     $("#dialog_error").html(message)

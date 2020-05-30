@@ -1,7 +1,9 @@
-const TOGGLE_URL = LOCAL_IP + '/raw/3A/toggle/',
-    SAVE_URL = LOCAL_IP + '/raw/1wire/register/?id=',
-    FIND_URL = LOCAL_IP + '/find?json=true'
+const TOGGLE_URL = 'http://' + LOCAL_IP + ':5051' + '/raw/3A/toggle/',
+    SAVE_URL = 'http://' + LOCAL_IP + ':5051' + '/raw/1wire/register/?id=',
+    FIND_URL = 'http://' + LOCAL_IP + ':5051' + '/find?json=true'
 
+
+console.log(TOGGLE_URL, SAVE_URL, FIND_URL)
 $(document).ready(() => {
     $("#cleanup").click(_ => {
         $("#dialog_cleanup_confirm").dialog({

@@ -40,6 +40,7 @@ let updateIp = () => {
         result = JSON.parse(result)
         $('#ip').html(result.ip)
         LOCAL_IP = result.ip.split(' ')[0]
+        console.log('local ip', LOCAL_IP)
     }).fail(function () {
         console.log('error')
     })
