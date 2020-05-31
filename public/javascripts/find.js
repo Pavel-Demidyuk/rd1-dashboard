@@ -1,8 +1,10 @@
 const TOGGLE_URL = 'http://' + LOCAL_IP + ':5051' + '/raw/3A/toggle/',
     SAVE_URL = 'http://' + LOCAL_IP + ':5051' + '/raw/1wire/register/?id=',
-    FIND_URL = 'http://' + LOCAL_IP + ':5051' + '/find?json=true'
-CLEANUP_URL = 'http://' + LOCAL_IP + ':3000' + '/cleanup'
+    FIND_URL = 'http://' + LOCAL_IP + ':5051' + '/find?json=true',
+    CLEANUP_URL = 'http://' + LOCAL_IP + ':3000' + '/cleanup'
 
+
+console.log("!!!!!", TOGGLE_URL, SAVE_URL,  FIND_URL, CLEANUP_URL)
 $(document).ready(() => {
     $("#cleanup").click(_ => {
         $("#dialog_cleanup_confirm").dialog({
@@ -67,10 +69,11 @@ $(document).ready(() => {
     })
 })
 $(".on_off").click(_ => {
-    toggle(foundDevices[index].uuid)
+    toggle(uuid)
 })
 
 let showDeviceDialog = index => {
+    uuid = foundDevices[index].uuid
     $("#dialog_device_context").html(' ' + (index + 1) + ' из ' + foundDevices.length)
     $("#dialog_device").dialog({
         // position: {my: "right-100 top-250"},
