@@ -152,7 +152,7 @@ let getHealth = () => {
             });
         });
         request.on('error', function (e) {
-            reject('')
+            reject('Health getting error!')
         });
         request.end();
     })
@@ -174,7 +174,7 @@ let getServicesStatuses = () => {
             let result = []
             if (err) {
                 console.error(err)
-                reject(err)
+                reject('Services status error!' + err)
             } else {
                 stdout.split(/\r?\n/).forEach(status => {
                     if (status.length === 0) {
