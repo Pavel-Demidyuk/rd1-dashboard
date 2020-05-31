@@ -41,10 +41,10 @@ let updateIp = () => {
         $('#ip').html(result.ip)
         let LOCAL_IP = result.ip.split(' ')[0]
 
-        global.TOGGLE_URL = 'http://' + LOCAL_IP + ':5051' + '/raw/3A/toggle/';
-        global.SAVE_URL = 'http://' + LOCAL_IP + ':5051' + '/raw/1wire/register/?id=',
-        global.FIND_URL = 'http://' + LOCAL_IP + ':5051' + '/find?json=true',
-        global.CLEANUP_URL = 'http://' + LOCAL_IP + ':3000' + '/cleanup'
+        TOGGLE_URL = 'http://' + LOCAL_IP + ':5051' + '/raw/3A/toggle/';
+        SAVE_URL = 'http://' + LOCAL_IP + ':5051' + '/raw/1wire/register/?id=',
+        FIND_URL = 'http://' + LOCAL_IP + ':5051' + '/find?json=true',
+        CLEANUP_URL = 'http://' + LOCAL_IP + ':3000' + '/cleanup'
         // LOCAL_URL = 'http://' + LOCAL_IP + ':3000'
 
         console.log("!!!!!", TOGGLE_URL, SAVE_URL, FIND_URL, CLEANUP_URL)
