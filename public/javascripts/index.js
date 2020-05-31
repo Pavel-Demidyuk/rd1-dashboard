@@ -4,9 +4,6 @@ $(document).ready(() => {
     });
 })
 
-let LOCAL_IP = '127.0.0.1'
-let LOCAL_URL = 'http://' + LOCAL_IP + ':3000'
-
 let error = message => {
     $("#dialog_error").html(message)
     $("#dialog_error").dialog({
