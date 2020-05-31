@@ -9,7 +9,7 @@ $(document).ready(() => {
 })
 
 let updateTime = () => {
-    $.get('time', result => {
+    $.get(LOCAL_URL + '/time', result => {
         result = JSON.parse(result)
         $('#time').html(result.time)
     }).fail(function () {
@@ -18,7 +18,7 @@ let updateTime = () => {
 }
 
 let updateSpace = () => {
-    $.get('space', result => {
+    $.get(LOCAL_URL + '/space', result => {
         $('#space').html(result)
     }).fail(function () {
         console.log('error')
@@ -27,7 +27,7 @@ let updateSpace = () => {
 }
 
 let updateCpu = () => {
-    $.get('cpu', result => {
+    $.get(LOCAL_URL + '/cpu', result => {
         // result = JSON.parse(result)
         $('#cpu').html(result.cpu)
     }).fail(function () {
@@ -36,10 +36,11 @@ let updateCpu = () => {
 }
 
 let updateIp = () => {
-    $.get('ip', result => {
+    $.get(LOCAL_URL + '/ip', result => {
         result = JSON.parse(result)
         $('#ip').html(result.ip)
         LOCAL_IP = result.ip.split(' ')[0]
+        LOCAL_URL =
         console.log('local ip', LOCAL_IP)
     }).fail(function () {
         console.log('error')
@@ -49,7 +50,7 @@ let updateIp = () => {
 }
 
 let updatePublicIp = () => {
-    $.get('public_ip', result => {
+    $.get(LOCAL_URL + '/public_ip', result => {
         result = JSON.parse(result)
         $('#public_ip').html(result.ip)
     }).fail(function () {
@@ -87,7 +88,7 @@ $('#reboot').click(_ => {
             {
                 text: "Перезагрузить",
                 click: function () {
-                    $.get('reboot', result => {
+                    $.get(LOCAL_URL + '/reboot', result => {
                         $(this).dialog("close");
                     }).fail(function () {
                         $(this).dialog("close");
