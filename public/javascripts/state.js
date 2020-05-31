@@ -41,13 +41,13 @@ let updateIp = () => {
         $('#ip').html(result.ip)
         let LOCAL_IP = result.ip.split(' ')[0]
 
-        const TOGGLE_URL = 'http://' + LOCAL_IP + ':5051' + '/raw/3A/toggle/',
-            SAVE_URL = 'http://' + LOCAL_IP + ':5051' + '/raw/1wire/register/?id=',
-            FIND_URL = 'http://' + LOCAL_IP + ':5051' + '/find?json=true',
-            CLEANUP_URL = 'http://' + LOCAL_IP + ':3000' + '/cleanup'
-            // LOCAL_URL = 'http://' + LOCAL_IP + ':3000'
+        global.TOGGLE_URL = 'http://' + LOCAL_IP + ':5051' + '/raw/3A/toggle/';
+        global.SAVE_URL = 'http://' + LOCAL_IP + ':5051' + '/raw/1wire/register/?id=',
+        global.FIND_URL = 'http://' + LOCAL_IP + ':5051' + '/find?json=true',
+        global.CLEANUP_URL = 'http://' + LOCAL_IP + ':3000' + '/cleanup'
+        // LOCAL_URL = 'http://' + LOCAL_IP + ':3000'
 
-        console.log("!!!!!", TOGGLE_URL, SAVE_URL,  FIND_URL, CLEANUP_URL)
+        console.log("!!!!!", TOGGLE_URL, SAVE_URL, FIND_URL, CLEANUP_URL)
     }).fail(function () {
         console.log('error')
     })
@@ -69,7 +69,7 @@ let updatePublicIp = () => {
 let updateHealth = () => {
     $.ajax({
         url: HEALTH_URL,
-        success: function(result){
+        success: function (result) {
             result = JSON.parse(result)
             $('#health').html('Health: ' + result.status +
                 '<br/> Registered devices: ' + result.devicesCount)
@@ -94,7 +94,7 @@ $('#reboot').click(_ => {
             {
                 text: "Перезагрузить",
                 click: function () {
-                    $.get( '/reboot', _ => {
+                    $.get('/reboot', _ => {
                         $(this).dialog("close");
                     }).fail(function () {
                         $(this).dialog("close");
