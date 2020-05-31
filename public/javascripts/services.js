@@ -1,6 +1,6 @@
 let updateStatusHandler = () => {
     console.log("Updating statuses")
-    $.get(LOCAL_URL + '/status_json', result => {
+    $.get('/status_json', result => {
         result = JSON.parse(result)
         $('tbody#services').html('')
         let allGreen = false

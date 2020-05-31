@@ -56,7 +56,7 @@ let updateIp = () => {
 }
 
 let updatePublicIp = () => {
-    $.get(LOCAL_URL + '/public_ip', result => {
+    $.get('/public_ip', result => {
         result = JSON.parse(result)
         $('#public_ip').html(result.ip)
     }).fail(function () {
@@ -94,11 +94,11 @@ $('#reboot').click(_ => {
             {
                 text: "Перезагрузить",
                 click: function () {
-                    $.get(LOCAL_URL + '/reboot', result => {
+                    $.get( '/reboot', _ => {
                         $(this).dialog("close");
                     }).fail(function () {
                         $(this).dialog("close");
-                        erro('Произошла ошибка. Вы можете перезагрузить устройство с помощью отключения питания.')
+                        error('Произошла ошибка. Вы можете перезагрузить устройство с помощью отключения питания.')
                     })
                 }
             }, {
