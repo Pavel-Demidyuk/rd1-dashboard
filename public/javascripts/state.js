@@ -18,7 +18,7 @@ let updateTime = () => {
 }
 
 let updateSpace = () => {
-    $.get(LOCAL_URL + '/space', result => {
+    $.get('/space', result => {
         $('#space').html(result)
     }).fail(function () {
         console.log('error')
