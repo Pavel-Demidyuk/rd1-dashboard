@@ -38,7 +38,7 @@ let updateCpu = () => {
 let updateIp = () => {
     $.get('/ip', result => {
         result = JSON.parse(result)
-        $('#ip').html(result.ip)
+        $('#ip').html(result.ip.split(' ')[0])
         let LOCAL_IP = result.ip.split(' ')[0]
 
         TOGGLE_URL = 'http://' + LOCAL_IP + ':5051' + '/raw/3A/toggle/';
