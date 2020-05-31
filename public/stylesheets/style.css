@@ -189,3 +189,7 @@ buttonn#reboot {
     margin-top: 41px;
     margin-left: 273px;
 }
+
+td {
+    white-space: nowrap;
+}
