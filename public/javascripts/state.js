@@ -45,9 +45,6 @@ let updateIp = () => {
         SAVE_URL = 'http://' + LOCAL_IP + ':5051' + '/raw/1wire/register/?id=',
         FIND_URL = 'http://' + LOCAL_IP + ':5051' + '/find?json=true',
         CLEANUP_URL = 'http://' + LOCAL_IP + ':3000' + '/cleanup'
-        // LOCAL_URL = 'http://' + LOCAL_IP + ':3000'
-
-        console.log("!!!!!", TOGGLE_URL, SAVE_URL, FIND_URL, CLEANUP_URL)
     }).fail(function () {
         console.log('error')
     })
