@@ -36,7 +36,7 @@ let updateCpu = () => {
 }
 
 let updateIp = () => {
-    $.get(LOCAL_URL + '/ip', result => {
+    $.get('/ip', result => {
         result = JSON.parse(result)
         $('#ip').html(result.ip)
         let LOCAL_IP = result.ip.split(' ')[0]
