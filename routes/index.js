@@ -96,16 +96,21 @@ router.get('/space', (req, res, next) => {
 });
 
 router.get('/wifi/list', (req, res) => {
-    // exec("df -hl / | awk 'NR == 2{print $5+0}'", (err, stdout, stderr) => {
-    //     res.send(stdout + '%');
-    // })
-    res.send({
-        list: [
-            1, 2, 3, 45, 'test', 'adfjlkajldkasjdlkas',
-            1, 2, 3, 45, 'test', 'adfjlkajldkasjdlkas',
-            1, 2, 3, 45, 'test', 'adfjlkajldkasjdlkas',
-        ]
-    });
+    exec("sudo iwlist wlan0 scan|grep SSID", (err, stdout, stderr) => {
+        // res.send(stdout + '%');
+        let networks = stdout.split("\n").map(line =>
+            line.trim().replace(/\"/g, '').replace(/ESSID:/g, '')
+        )
+
+        res.send({list: networks})
+    })
+    // res.send({
+    //     list: [
+    //         1, 2, 3, 45, 'test', 'adfjlkajldkasjdlkas',
+    //         1, 2, 3, 45, 'test', 'adfjlkajldkasjdlkas',
+    //         1, 2, 3, 45, 'test', 'adfjlkajldkasjdlkas',
+    //     ]
+    // });
 });
 
 router.get('/wifi/status', (_, res) => {
