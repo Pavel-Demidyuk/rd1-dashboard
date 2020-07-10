@@ -103,7 +103,7 @@ router.get('/wifi/list', (req, res) => {
                 .replace(/\"/g, '')
                 .replace(/ESSID:/g, '')
 
-        ).filter(line => line != null)
+        ).filter(line => line != "")
 
         res.send({list: networks})
     })
