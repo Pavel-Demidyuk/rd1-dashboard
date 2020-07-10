@@ -6,7 +6,7 @@ const {exec} = require('child_process'),
     HEALTH_URL = '/health'
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
+router.get('/', (req, res, next) => {
     getServicesStatuses()
         .then(result => {
             res.render('index', {
@@ -21,7 +21,7 @@ router.get('/', function (req, res, next) {
     })
 });
 
-router.get('/cleanup', function (req, res, next) {
+router.get('/cleanup', (req, res, next) => {
     exec('cd /root/rd1 && boot/bash/services/rd1_stop.sh && sleep 5 && boot/bash/cleanup.sh && boot/bash/update.sh && boot/bash/services/rd1_run.sh', (err, stdout, stderr) => {
         res.setHeader('Access-Control-Allow-Origin', '*')
         res.send(JSON.stringify({
@@ -30,7 +30,7 @@ router.get('/cleanup', function (req, res, next) {
     })
 });
 
-router.get('/ip', function (req, res, next) {
+router.get('/ip', (req, res, next) => {
     getIp().then(result => {
         res.send(JSON.stringify({
             ip: result
@@ -38,7 +38,7 @@ router.get('/ip', function (req, res, next) {
     })
 });
 
-router.get('/public_ip', function (req, res, next) {
+router.get('/public_ip', (req, res, next) => {
     getPublicIp().then(result => {
         res.send(JSON.stringify({
             ip: result
@@ -46,7 +46,7 @@ router.get('/public_ip', function (req, res, next) {
     })
 });
 
-router.get('/time', function (req, res, next) {
+router.get('/time', (req, res, next) => {
     getTime().then(result => {
         res.send(JSON.stringify({
             time: result
@@ -54,13 +54,13 @@ router.get('/time', function (req, res, next) {
     })
 });
 
-router.get('/health', function (req, res, next) {
+router.get('/health', (req, res, next) => {
     getHealth().then(result => {
         res.send(result);
     })
 });
 
-router.get('/reboot', function (req, res, next) {
+router.get('/reboot', (req, res, next) => {
     exec('shutdown -r now', (err, stdout, stderr) => {
         res.send({
             reboot: 'started'
@@ -68,7 +68,7 @@ router.get('/reboot', function (req, res, next) {
     })
 });
 
-router.get('/status_json', function (req, res, next) {
+router.get('/status_json', (req, res, next) => {
     getServicesStatuses().then(containers => {
         res.send(JSON.stringify({
             containers: containers
@@ -81,7 +81,7 @@ router.get('/status_json', function (req, res, next) {
         })
 });
 
-router.get('/cpu', function (req, res, next) {
+router.get('/cpu', (req, res, next) => {
     exec('vcgencmd measure_temp', (err, stdout, stderr) => {
         res.send({
             cpu: stdout
@@ -89,7 +89,7 @@ router.get('/cpu', function (req, res, next) {
     })
 });
 
-router.get('/space', function (req, res, next) {
+router.get('/space', (req, res, next) => {
     exec("df -hl / | awk 'NR == 2{print $5+0}'", (err, stdout, stderr) => {
         res.send(stdout + '%');
     })
