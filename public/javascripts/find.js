@@ -18,6 +18,7 @@ $(document).ready(() => {
     })
 
     let cleanup = () => {
+        disableScreensaver = true;
         $('#loading').hide()
         $('#find_tab').hide()
         $('#cleanup_info').show();
@@ -33,9 +34,13 @@ $(document).ready(() => {
                 $('#find_tab').show();
                 error('Ошибка перезагрузки системы.')
             })
+            .always( _=> {
+                disableScreensaver = false;
+            })
     }
 
     $("#find").click(() => {
+        disableScreensaver = true;
         foundDevices = []
         $("#find_tab").hide()
         $("#loading").show()
@@ -58,6 +63,9 @@ $(document).ready(() => {
                 $("#loading").hide()
                 $("#find_tab").show()
                 error('Ошибка при загрузке новых устройств, попробуйте снова или свяжитесь с поддержкой.')
+            })
+            .always( _=> {
+                disableScreensaver = false;
             })
     })
 })

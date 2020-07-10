@@ -95,6 +95,38 @@ router.get('/space', function (req, res, next) {
     })
 });
 
+router.get('/wifi/list', (req, res) => {
+    // exec("df -hl / | awk 'NR == 2{print $5+0}'", (err, stdout, stderr) => {
+    //     res.send(stdout + '%');
+    // })
+    res.send({
+        list: [
+            1, 2, 3, 45, 'test', 'adfjlkajldkasjdlkas',
+            1, 2, 3, 45, 'test', 'adfjlkajldkasjdlkas',
+            1, 2, 3, 45, 'test', 'adfjlkajldkasjdlkas',
+        ]
+    });
+});
+
+router.get('/wifi/status', (_, res) => {
+    // @TODO add wifi logic
+
+    // data.currentNetwork)
+    // $("#internet_connection").html(data.internetConnection)
+    res.send({
+        status: 'ok',
+        currentNetwork: 'abracadabra',
+        internetConnection: 'да'
+    })
+})
+
+router.post('/wifi/save', (req, res) => {
+    console.log("!!!!", req.body.net, req.body.pass)
+    res.send({
+        done: true
+    })
+})
+
 let getIp = () => {
     return new Promise(resolve => {
         exec('hostname -I', (err, stdout, stderr) => {

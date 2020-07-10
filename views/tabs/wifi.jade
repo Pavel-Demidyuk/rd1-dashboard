@@ -1,0 +1,22 @@
+div.wifi_list
+    ul
+
+div
+    button#refresh_wifi.mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect.mdl-button--colored
+        i.material-icons loop
+    div.wifi_state
+        | сеть:&nbsp;
+        span#current_network
+            | loading...
+        | <br/>интернет:&nbsp;
+        span#internet_connection
+            | loading...
+
+div.wifipass
+    input.wifi
+    div.simple-keyboard
+    button.wifi.save.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-color--accent
+        |  Сохранить
+    button.wifi.close.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-color--amber
+        | Закрыть
+    script(src='/javascripts/wifi.js')

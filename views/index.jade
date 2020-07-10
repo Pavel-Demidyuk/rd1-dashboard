@@ -3,17 +3,22 @@ extends layout
 block content
     #tabs
         ul
+
             li
-                a(href='#tabs-1' style='padding:15px 30px 15px 30px') Сервисы
+                a(href='#tabs-2' style='padding-left: 23px; padding-right: 23px') Поиск
             li
-                a(href='#tabs-2' style='padding:15px 30px 15px 30px') Поиск
+                a(href='#tabs-3' style='padding-left: 23px; padding-right: 23px') Состояние
             li
-                a(href='#tabs-3' style='padding:15px 30px 15px 30px') Состояние
+                a(href='#tabs-1' style='padding-left: 23px; padding-right: 23px') Сервисы
+            li
+                a(href='#tabs-4' style='padding-left: 23px; width:66px') Wi-Fi <i class="wifi_signal material-icons">...</i>
+
         #tabs-1
             include tabs/services
-
         #tabs-2
             include tabs/find
         #tabs-3
             include tabs/state
+        #tabs-4
+            include tabs/wifi
     script(src='/javascripts/index.js')

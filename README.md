@@ -1,1 +1,2 @@
-* reload button bigger
+* TURN ON OFF
+* WIFI PROMPT 

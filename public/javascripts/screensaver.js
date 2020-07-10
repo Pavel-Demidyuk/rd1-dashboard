@@ -1,9 +1,12 @@
 let mousetimeout;
 let screensaver_active = false;
-let idletime = 180;
+let disableScreensaver = false
+const IDLETIME_MINUNTES = 10;
 
 function show_screensaver() {
-    console.log('starting screensaver')
+    if (disableScreensaver) {
+        return;
+    }
     $('#screensaver').fadeIn();
     screensaver_active = true;
     screensaver_animation();
@@ -15,23 +18,30 @@ function stop_screensaver() {
     screensaver_active = false;
 }
 
-$(document).mousemove(function () {
+$(document).mousemove(_ => {
     clearTimeout(mousetimeout);
 
     if (screensaver_active) {
         stop_screensaver();
     }
 
-    mousetimeout = setTimeout(function () {
+    mousetimeout = setTimeout(_ => {
         show_screensaver()
-    }, 1000 * idletime);
+    }, 1000 * 60 * IDLETIME_MINUNTES);
 });
 
-$(document).ready(() => {
-    show_screensaver()
+$(document).ready(_ => {
+    show_screensaver();
+    setTimeout(_ => {
+        stop_screensaver()
+    }, 3000)
+
+    mousetimeout = setTimeout(_ => {
+        show_screensaver()
+    }, 1000 * IDLETIME_MINUNTES);
 })
 
-let getRandomPosition = () => {
+let getRandomPosition = _ => {
     return Math.floor(Math.random() * 110) + '%'
 }
 
