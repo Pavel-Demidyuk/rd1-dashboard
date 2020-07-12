@@ -119,7 +119,7 @@ router.get('/wifi/status', (_, res) => {
             })
             return
         }
-        let currentNetwork = [1].trim()
+        let currentNetwork = networks[1].trim()
         if (currentNetwork != '') {
             exec("ping -c 1 8.8.8.8 | grep ' 0% packet loss'", (err, stdout, stderr) => {
                 res.send({
