@@ -102,36 +102,52 @@ router.get('/wifi/list', (req, res) => {
             line.trim()
                 .replace(/\"/g, '')
                 .replace(/ESSID:/g, '')
-
         ).filter(line => line != "")
 
         res.send({list: networks})
     })
-    // res.send({
-    //     list: [
-    //         1, 2, 3, 45, 'test', 'adfjlkajldkasjdlkas',
-    //         1, 2, 3, 45, 'test', 'adfjlkajldkasjdlkas',
-    //         1, 2, 3, 45, 'test', 'adfjlkajldkasjdlkas',
-    //     ]
-    // });
-});
+})
 
 router.get('/wifi/status', (_, res) => {
-    // @TODO add wifi logic
-
-    // data.currentNetwork)
-    // $("#internet_connection").html(data.internetConnection)
-    res.send({
-        status: 'ok',
-        currentNetwork: 'abracadabra',
-        internetConnection: 'да'
+    exec("iwgetid", (err, stdout, stderr) => {
+        let networks = stdout.match(/\"([^\"]+)\"/)
+        if (networks === null || typeof networks === 'undefined') {
+            res.send({
+                status: 'undefined',
+                currentNetwork: 'undefined',
+                internetConnection: 'нет'
+            })
+            return
+        }
+        let currentNetwork = [1].trim()
+        if (currentNetwork != '') {
+            exec("ping -c 1 8.8.8.8 | grep ' 0% packet loss'", (err, stdout, stderr) => {
+                res.send({
+                    status: 'ok',
+                    currentNetwork: currentNetwork,
+                    internetConnection: stdout.trim() != '' ? 'да' : 'нет'
+                })
+            })
+        } else {
+            res.send({
+                status: 'not connected',
+                currentNetwork: '-',
+                internetConnection: 'нет'
+            })
+        }
+        //exec ("ping -c 1 8.8.8.8 | grep ' 0% packet loss'")
     })
+
+
 })
 
 router.post('/wifi/save', (req, res) => {
-    console.log("!!!!", req.body.net, req.body.pass)
-    res.send({
-        done: true
+    exec('sed -i -E "s/ssid=\\"[^\\"]*\\"/ssid=\\"' + req.body.net + '\\"/g" /etc/wpa_supplicant/wpa_supplicant.conf', (err, stdout, stderr) => {
+        exec('sed -i -E "s/psk=\\"[^\\"]*\\"/psl=\\"' + req.body.pass + '\\"/g" /etc/wpa_supplicant/wpa_supplicant.conf', (err, stdout, stderr) => {
+            res.send({
+                status: 'ok'
+            })
+        })
     })
 })
 
