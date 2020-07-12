@@ -231,7 +231,7 @@ button.wifi {
 }
 
 .wifi_list {
-    overflow-y: auto;
+    overflow-y: scroll;
     border: 1px solid #90a4ae;
     height: 196px;
     width: 426px;
@@ -240,10 +240,11 @@ button.wifi {
 
 .wifi_list::-webkit-scrollbar {
     -webkit-appearance: none;
+    width: 3em;
 }
 
 .wifi_list::-webkit-scrollbar:vertical {
-    width: 11px;
+    width: 2em;
 }
 
 .wifi_list::-webkit-scrollbar:horizontal {
