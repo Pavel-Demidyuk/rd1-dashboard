@@ -104,7 +104,7 @@ router.get('/wifi/list', (req, res) => {
                 .replace(/ESSID:/g, '')
         ).filter(line => line != "")
 
-        res.send({list: networks})
+        res.send({list: networks.concat([1,2,3,4,56,7,8,9,0,10])})
     })
 })
 
