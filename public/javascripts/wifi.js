@@ -17,7 +17,7 @@ let myKeyboard = new Keyboard({
             'Q W E R T Y U I O P { } |',
             'A S D F G H J K L : "',
             '{shift} Z X C V B N M < > ?',
-            '@{space}'
+            '@ {space}'
         ]
     }
 });
@@ -101,9 +101,8 @@ $(document).ready(() => {
     })
 
     $('.wifi.save').click(_ => {
-        console.log("ave!!!")
         $.post('/wifi/save', {
-            net: '',
+            net: $('input.wifi_net').val(),
             pass: $('input.wifi').val()
         }).done(_ => {
             refreshWifiList(_ => {
@@ -126,5 +125,7 @@ $(document).ready(() => {
 })
 
 let showPasswordDialog = net => {
+    $('.wifi_net').val(net)
+    $('.wifi').val('')
     $('.wifipass').show()
 }
