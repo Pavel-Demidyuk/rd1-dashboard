@@ -96,10 +96,6 @@ router.get('/space', (req, res, next) => {
 });
 
 router.get('/wifi/list', (req, res) => {
-    res.send({list: [1,2,3,4,56,7,8,9,0,10]})
-    return
-
-
     exec("sudo iwlist wlan0 scan|grep SSID", (err, stdout, stderr) => {
         // res.send(stdout + '%');
         let networks = stdout.split("\n").map(line =>
@@ -108,7 +104,7 @@ router.get('/wifi/list', (req, res) => {
                 .replace(/ESSID:/g, '')
         ).filter(line => line != "")
 
-        res.send({list: networks.concat([1,2,3,4,56,7,8,9,0,10])})
+        res.send({list: networks})
     })
 })
 
