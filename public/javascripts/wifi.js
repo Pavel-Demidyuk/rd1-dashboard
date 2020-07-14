@@ -26,8 +26,7 @@ let updateStatus = _ => {
     $.get('/wifi/status').done(data => {
         if (data.status === 'ok') {
             setStatusGreen(data)
-        }
-        else {
+        } else {
             setStatusAmber(data)
         }
     })
@@ -101,10 +100,12 @@ $(document).ready(() => {
     })
 
     $('.wifi.save').click(_ => {
+        $('button.wifi.close').attr('value', 'Сохраняем...')
         $.post('/wifi/save', {
             net: $('input.wifi_net').val(),
             pass: $('input.wifi').val()
         }).done(_ => {
+            $('button.wifi.close').attr('value', 'Закрыть')
             refreshWifiList(_ => {
                 closePass();
             })
@@ -125,6 +126,7 @@ $(document).ready(() => {
 })
 
 let showPasswordDialog = net => {
+    $('button.wifi.close').attr('value', 'Закрыть')
     $('.wifi_net').val(net)
     $('.wifi').val('')
     $('.wifipass').show()
