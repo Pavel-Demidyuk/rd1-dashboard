@@ -142,8 +142,8 @@ router.get('/wifi/status', (_, res) => {
 })
 
 router.post('/wifi/save', (req, res) => {
-    exec('sed -i -E "s/ssid=\\"[^\\"]*\\"/ssid=\\"' + req.body.net + '\\"/g" /etc/wpa_supplicant/wpa_supplicant.conf', (err, stdout, stderr) => {
-        exec('sed -i -E "s/psk=\\"[^\\"]*\\"/psl=\\"' + req.body.pass + '\\"/g" /etc/wpa_supplicant/wpa_supplicant.conf', (err, stdout, stderr) => {
+    exec('sudo sed -i -E "s/ssid=\\"[^\\"]*\\"/ssid=\\"' + req.body.net + '\\"/g" /etc/wpa_supplicant/wpa_supplicant.conf', (err, stdout, stderr) => {
+        exec('sudo sed -i -E "s/psk=\\"[^\\"]*\\"/psl=\\"' + req.body.pass + '\\"/g" /etc/wpa_supplicant/wpa_supplicant.conf', (err, stdout, stderr) => {
 
             res.send({
                 status: 'ok'
@@ -227,7 +227,7 @@ let getServicesStatuses = () => {
     }
 
     return new Promise((resolve, reject) => {
-        exec("docker container ls -a --format '{{.Names}}***{{.Status}}'", (err, stdout, stderr) => {
+        exec("sudo docker container ls -a --format '{{.Names}}***{{.Status}}'", (err, stdout, stderr) => {
             let result = []
             if (err) {
                 console.error(err)
