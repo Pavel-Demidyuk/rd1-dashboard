@@ -143,12 +143,12 @@ router.get('/wifi/status', (_, res) => {
 
 router.post('/wifi/save', (req, res) => {
     let command1 = 'sudo sed -i -E "s/ssid=\\"[^\\"]*\\"/ssid=\\"' + req.body.net + '\\"/g" /etc/wpa_supplicant/wpa_supplicant.conf'
-    let command2 = 'sudo sed -i -E "s/psk=\\"[^\\"]*\\"/psl=\\"' + req.body.pass + '\\"/g" /etc/wpa_supplicant/wpa_supplicant.conf'
+    let command2 = 'sudo sed -i -E "s/psl=\\"[^\\"]*\\"/psl=\\"' + req.body.pass + '\\"/g" /etc/wpa_supplicant/wpa_supplicant.conf'
     exec(command1, (err1, stdout1, stderr1) => {
         exec(command2, (err2, stdout2, stderr2) => {
-            console.log("!!!!!", err1, stdout1, stderr1)
-            console.log("!!!!!", err2, stdout2, stderr2)
-            console.log("??", command1, command2)
+            // console.log("!!!!!", err1, stdout1, stderr1)
+            // console.log("!!!!!", err2, stdout2, stderr2)
+            // console.log("??", command1, command2)
             // exec('sudo service networking restart')
             res.send({
                 net: req.body.net,
