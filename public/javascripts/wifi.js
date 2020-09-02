@@ -23,7 +23,7 @@ let myKeyboard = new Keyboard({
 });
 
 let updateStatus = _ => {
-    $.get('/wifi/status').done(data => {
+    $.get('http://localhost/wifi/status').done(data => {
         if (data.status === 'ok') {
             setStatusGreen(data)
         } else {
@@ -53,7 +53,7 @@ let closePass = _ => {
 }
 
 let refreshWifiList = callback => {
-    $.get('/wifi/list')
+    $.get('http://localhost/wifi/list')
         .done(data => {
             $('.wifi_list').html("")
             data.list.forEach(net => {
