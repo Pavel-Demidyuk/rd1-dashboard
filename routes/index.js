@@ -146,6 +146,8 @@ router.post('/wifi/save', (req, res) => {
         exec('sudo sed -i -E "s/psk=\"[^\"]*\"/psl=\"' + req.body.pass + '\"/g" /etc/wpa_supplicant/wpa_supplicant.conf', (err, stdout, stderr) => {
             exec('sudo service networking restart')
             res.send({
+                net: req.body.net,
+                pass: req.body.pass,
                 status: 'ok'
             })
         })
