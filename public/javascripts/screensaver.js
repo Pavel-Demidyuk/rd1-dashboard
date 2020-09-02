@@ -34,7 +34,7 @@ $(document).ready(_ => {
     show_screensaver();
     setTimeout(_ => {
         stop_screensaver()
-    }, 3000)
+    }, 3001)
 
     mousetimeout = setTimeout(_ => {
         show_screensaver()
