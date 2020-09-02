@@ -144,7 +144,7 @@ router.get('/wifi/status', (_, res) => {
 router.post('/wifi/save', (req, res) => {
     exec('sudo sed -i -E "s/ssid=\\"[^\\"]*\\"/ssid=\\"' + req.body.net + '\\"/g" /etc/wpa_supplicant/wpa_supplicant.conf', (err, stdout, stderr) => {
         exec('sudo sed -i -E "s/psk=\\"[^\\"]*\\"/psl=\\"' + req.body.pass + '\\"/g" /etc/wpa_supplicant/wpa_supplicant.conf', (err, stdout, stderr) => {
-            exec('sudo ifdown wlan0 && sudo ifup wlan0')
+            exec('sudo service networking restart')
             res.send({
                 status: 'ok'
             })
