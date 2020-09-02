@@ -149,7 +149,7 @@ router.post('/wifi/save', (req, res) => {
             // console.log("!!!!!", err1, stdout1, stderr1)
             // console.log("!!!!!", err2, stdout2, stderr2)
             // console.log("??", command1, command2)
-            // exec('sudo service networking restart')
+            exec('sudo ifconfig wlan0 down && sleep 5 && sudo ifconfig wlan0 up')
             res.send({
                 net: req.body.net,
                 pass: req.body.pass,
