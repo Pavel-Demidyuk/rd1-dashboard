@@ -100,7 +100,7 @@ $(document).ready(() => {
     })
 
     $('.wifi.save').click(_ => {
-        $('button.wifi.close').attr('value', 'Сохраняем...')
+        $('button.wifi.close').html('Сохраняем...')
         $.post('/wifi/save', {
             net: $('input.wifi_net').val(),
             pass: $('input.wifi').val()
