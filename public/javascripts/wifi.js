@@ -43,7 +43,7 @@ let setStatusGreen = data => {
     $("#internet_connection").html(data.internetConnection)
 }
 
-let setStatusAmber = data => {
+let setStatusAmber = _ => {
     $('i.wifi_signal').html('signal_wifi_off')
     $('i.wifi_signal').addClass('warning')
 }
@@ -101,11 +101,15 @@ $(document).ready(() => {
 
     $('.wifi.save').click(_ => {
         $('button.wifi.save').html('Сохраняем...')
+        setStatusAmber()
+        let network = $('input.wifi_net').val();
+        $("#current_network").html($(network)
+        $("#internet_connection").html('...')
         $.post('/wifi/save', {
-            net: $('input.wifi_net').val(),
+            net: network,
             pass: $('input.wifi').val()
         }).done(_ => {
-            $('button.wifi.close').attr('value', 'Закрыть')
+            $('button.wifi.save').html('Готово!')
             refreshWifiList(_ => {
                 closePass();
             })
