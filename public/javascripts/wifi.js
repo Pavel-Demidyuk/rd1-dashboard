@@ -103,7 +103,7 @@ $(document).ready(() => {
         $('button.wifi.save').html('Сохраняем...')
         setStatusAmber()
         let network = $('input.wifi_net').val();
-        $("#current_network").html($(network)
+        $("#current_network").html(network)
         $("#internet_connection").html('...')
         $.post('/wifi/save', {
             net: network,
