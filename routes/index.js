@@ -61,7 +61,7 @@ router.get('/health', (req, res, next) => {
 });
 
 router.get('/reboot', (req, res, next) => {
-    exec('shutdown -r now', (err, stdout, stderr) => {
+    exec('sudo shutdown -r now', (err, stdout, stderr) => {
         res.send({
             reboot: 'started'
         });
