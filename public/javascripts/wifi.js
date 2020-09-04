@@ -133,6 +133,6 @@ let showPasswordDialog = net => {
     $('button.wifi.close').attr('value', 'Закрыть')
     $('button.wifi.save').html('Сохранить')
     $('.wifi_net').val(net)
-    $('.wifi').val('test')
+    $('input.wifi').val("")
     $('.wifipass').show()
 }
