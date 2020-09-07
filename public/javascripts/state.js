@@ -68,10 +68,16 @@ let updateHealth = () => {
         url: HEALTH_URL,
         success: function (result) {
             result = JSON.parse(result)
-            $('#health').html('Health: ' + result.status +
-                '<br/> Registered devices: ' + result.devicesCount)
-            $('#total_registered').html(result.devicesCount)
-            $('#total_physical').html(result.physicalCount)
+            if (result.error) {
+                $('#error_state').html(result.error)
+                $('#error_state').show()
+            }
+            else {
+                $('#error_state').hide()
+                $('#error_state').html('')
+                $('#total_registered').html(result.devicesCount)
+                $('#total_physical').html(result.physicalCount)
+            }
         },
         timeout: 5000 //in milliseconds
     });

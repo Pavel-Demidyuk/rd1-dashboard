@@ -269,5 +269,8 @@ i.wifi_signal {
     font-size: 12px;
     padding: 0 0 0 16px;
 }
-
-
+div#error_state {
+    display:none;
+    width:300px;
+    border:1px solid black;
+}
