@@ -271,6 +271,5 @@ i.wifi_signal {
 }
 div#error_state {
     display:none;
-    width:300px;
-    border:1px solid black;
+    width:400px;
 }
