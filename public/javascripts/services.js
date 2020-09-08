@@ -1,5 +1,19 @@
 let updateStatusHandler = () => {
-    console.log("Updating statuses")
+    let enableButtons = _ => {
+        $('#find').html('Поиск устройств')
+        $('#cleanup').html('Очистить все&nbsp;сохраненные')
+        $('#find').prop('disabled', false);
+        $('#cleanup').prop('disabled', false);
+
+    }
+
+    let disableButtons = _ => {
+        $('#find').html('Подождите, идет загрузка...')
+        $('#cleanup').html('Подождите, идет загрузка...')
+        $('#find').prop('disabled', true);
+        $('#cleanup').prop('disabled', true);
+    }
+
     $.get('/status_json', result => {
         result = JSON.parse(result)
         $('tbody#services').html('')
@@ -12,11 +26,9 @@ let updateStatusHandler = () => {
         })
 
         if (allGreen) {
-            $('#find').prop('disabled', false);
-            $('#cleanup').prop('disabled', false);
+           enableButtons()
         } else {
-            $('#find').prop('disabled', true);
-            $('#cleanup').prop('disabled', true);
+            disableButtons()
         }
     }).fail(function () {
         console.log('error')
