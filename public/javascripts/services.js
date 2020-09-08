@@ -1,7 +1,7 @@
 let updateStatusHandler = () => {
     let enableButtons = _ => {
         $('#find').html('Поиск устройств')
-        $('#cleanup').html('Очистить все&nbsp;сохраненные')
+        $('#cleanup').html('Очистить')
         $('#find').prop('disabled', false);
         $('#cleanup').prop('disabled', false);
 
