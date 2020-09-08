@@ -8,8 +8,8 @@ let updateStatusHandler = () => {
     }
 
     let disableButtons = _ => {
-        $('#find').html('Подождите, идет загрузка...')
-        $('#cleanup').html('Подождите, идет загрузка...')
+        $('#find').html('загрузка...')
+        $('#cleanup').html('загрузка...')
         $('#find').prop('disabled', true);
         $('#cleanup').prop('disabled', true);
     }
