@@ -1,4 +1,4 @@
-const REFRESH_STATUS_INTERVAL = 3000
+const REFRESH_STATUS_INTERVAL = 6000
 let Keyboard = window.SimpleKeyboard.default;
 
 let myKeyboard = new Keyboard({
@@ -41,6 +41,8 @@ let setStatusGreen = data => {
     $('i.wifi_signal').removeClass('warning')
     $("#current_network").html(data.currentNetwork)
     $("#internet_connection").html(data.internetConnection)
+    updatePublicIp()
+    updateIp()
 }
 
 let setStatusAmber = _ => {
@@ -93,7 +95,6 @@ function handleShift() {
 $(document).ready(() => {
     // wifi_list
     refreshWifiList();
-
 
     $('.wifi.close').click(_ => {
         closePass()

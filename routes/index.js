@@ -22,7 +22,9 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/cleanup', (req, res, next) => {
-    exec('cd /root/rd1 && boot/bash/services/rd1_stop.sh && sleep 5 && boot/bash/cleanup.sh && boot/bash/update.sh && boot/bash/services/rd1_run.sh', (err, stdout, stderr) => {
+    exec('rm -rf /home/pi/rd1-data/homebridge/accessories /home/pi/rd1-data/homebridge/persist && \
+    /home/pi/rd1-boot/services/rd1-app-stop.sh && /home/pi/rd1-boot/services/rd1-app.sh\
+    ', (err, stdout, stderr) => {
         res.setHeader('Access-Control-Allow-Origin', '*')
         res.send(JSON.stringify({
             done: true
