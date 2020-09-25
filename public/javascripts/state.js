@@ -97,9 +97,11 @@ $('#reboot_button').click(_ => {
             {
                 text: "Перезагрузить",
                 click: function () {
+                    $('body').hide('slow')
                     $.get('/reboot', _ => {
                         $(this).dialog("close");
                     }).fail(function () {
+                        $('body').show()
                         $(this).dialog("close");
                         error('Произошла ошибка. Вы можете перезагрузить устройство с помощью отключения питания.')
                     })
