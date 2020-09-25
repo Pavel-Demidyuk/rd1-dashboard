@@ -2,7 +2,6 @@ const HEALTH_URL = 'health'
 
 $(document).ready(() => {
     setTimeout(updateAll, 5000)
-
     updateIp();
     updateSpace();
     updatePublicIp();
@@ -122,6 +121,10 @@ $('#update_button').click(_ => {
             {
                 text: "Обновить",
                 click: function () {
+                    let updatingScreen = $('#updateScreen')
+                    $('body').empty()
+                    $('body').append(updatingScreen)
+                    $('#updateScreen').show()
                     $.get('/update', _ => {
                         $(this).dialog("close");
                     }).fail( _ =>{
