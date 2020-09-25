@@ -71,7 +71,7 @@ router.get('/reboot', (req, res, next) => {
 });
 
 router.get('/update', (req, res, next) => {
-    exec('/home/pi/rd1-boot/bash/services/global_update.sh', (err, stdout, stderr) => {
+    exec('/home/pi/rd1-boot/bash/services/update/global_update.sh', (err, stdout, stderr) => {
         res.send({
             update: 'done!'
         });
