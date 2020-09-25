@@ -1,3 +1,8 @@
+LOCAL = false
+if (typeof process.env.env !== 'undefined' &&  process.env.env === 'local') {
+  LOCAL = true
+}
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');

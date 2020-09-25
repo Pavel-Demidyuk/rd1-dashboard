@@ -170,6 +170,14 @@ table#states, table.services_table {
     display: none;
 }
 
+#update_dialog {
+    display: none;
+    marign-top:20px;
+}
+button#update_button{
+    margin-left:144px;
+}
+
 .critical_button {
     background-color: #ad1457;
     color: #fffde7;

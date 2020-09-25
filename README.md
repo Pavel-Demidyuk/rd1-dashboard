@@ -1,3 +1,4 @@
-* TURN ON OFF outlets
-* WIFI PROMPT 
-* NODERED RESTARTING
+
+
+#Start local
+DEBUG=* env=local npm start

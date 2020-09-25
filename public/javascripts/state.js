@@ -91,7 +91,7 @@ let updateAll = () => {
     setTimeout(updateAll, 20000)
 }
 
-$('#reboot').click(_ => {
+$('#reboot_button').click(_ => {
     $("#reboot_dialog").dialog({
         buttons: [
             {
@@ -104,7 +104,7 @@ $('#reboot').click(_ => {
                         error('Произошла ошибка. Вы можете перезагрузить устройство с помощью отключения питания.')
                     })
                 }
-            }, {
+            },{
                 text: "Отмена",
                 click: function () {
                     $(this).dialog("close");
@@ -113,6 +113,33 @@ $('#reboot').click(_ => {
         ]
     });
 })
+
+$('#update_button').click(_ => {
+    $("#update_dialog").dialog({
+        buttons: [
+            {
+                text: "Обновить",
+                click: function () {
+                    $.get('/update', _ => {
+                        $(this).dialog("close");
+                    }).fail( _ =>{
+                        $(this).dialog("close");
+                        error('Ошибка!')
+                    }).done(_ => {
+                        $(this).dialog("close");
+                        location.reload();
+                    })
+                }
+            },{
+                text: "Отмена",
+                click: _ => {
+                    $(this).dialog("close");
+                }
+            }
+        ]
+    });
+})
+
 
 
 

@@ -70,6 +70,14 @@ router.get('/reboot', (req, res, next) => {
     })
 });
 
+router.get('/update', (req, res, next) => {
+    exec('/home/pi/rd1-boot/services/global_update.sh', (err, stdout, stderr) => {
+        res.send({
+            update: 'done!'
+        });
+    })
+});
+
 router.get('/status_json', (req, res, next) => {
     getServicesStatuses().then(containers => {
         res.send(JSON.stringify({
@@ -98,6 +106,10 @@ router.get('/space', (req, res, next) => {
 });
 
 router.get('/wifi/list', (req, res) => {
+    if (LOCAL) {
+        res.send({list: []})
+        return;
+    }
     exec("sudo iwlist wlan0 scan|grep SSID", (err, stdout, stderr) => {
         // res.send(stdout + '%');
         let networks = stdout.split("\n").map(line =>
@@ -111,6 +123,15 @@ router.get('/wifi/list', (req, res) => {
 })
 
 router.get('/wifi/status', (_, res) => {
+    if (LOCAL) {
+        res.send({
+            status: 'green',
+            currentNetwork: 'local_test',
+            internetConnection: 'да'
+        })
+        return;
+    }
+
     exec("iwgetid", (err, stdout, stderr) => {
         let networks = stdout.match(/\"([^\"]+)\"/)
         if (networks === null || typeof networks === 'undefined') {
@@ -225,6 +246,13 @@ let getHealth = () => {
 }
 
 let getServicesStatuses = () => {
+    if (LOCAL) {
+        return new Promise (resolve => {
+            resolve([])
+        })
+        return;
+    }
+
     let parseColorStatus = (state) => {
         if (state.toLowerCase().includes('unhealthy') || state.toLowerCase().includes('exit') || state.toLowerCase().includes('dead')) {
             return 'red'
