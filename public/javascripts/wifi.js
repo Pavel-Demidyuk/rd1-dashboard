@@ -45,9 +45,13 @@ let setStatusGreen = data => {
     updateIp()
 }
 
-let setStatusAmber = _ => {
+let setStatusAmber = data => {
     $('i.wifi_signal').html('signal_wifi_off')
     $('i.wifi_signal').addClass('warning')
+    $("#current_network").html(data.currentNetwork)
+    $("#internet_connection").html('нет')
+    updatePublicIp()
+    updateIp()
 }
 
 let closePass = _ => {
@@ -102,7 +106,8 @@ $(document).ready(() => {
 
     $('.wifi.save').click(_ => {
         $('button.wifi.save').html('Сохраняем...')
-        setStatusAmber()
+        setStatusAmber({currentNetwork: '...'})
+
         let network = $('input.wifi_net').val();
         $("#current_network").html(network)
         $("#internet_connection").html('...')
